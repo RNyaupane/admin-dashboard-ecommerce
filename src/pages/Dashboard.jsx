@@ -121,7 +121,7 @@ const Dashboard = () => {
           <div className="col-md-3">
             <div className="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
               <div>
-                <h3 className="fs-2">720</h3>
+                <h3 className="fs-3">720</h3>
                 <p className="fs-5">Products</p>
               </div>
               <i className="fas fa-gift fs-1 primary-text border rounded-full secondary-bg p-3"></i>
@@ -131,7 +131,7 @@ const Dashboard = () => {
           <div className="col-md-3">
             <div className="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
               <div>
-                <h3 className="fs-2">4920</h3>
+                <h3 className="fs-3">4920</h3>
                 <p className="fs-5">Sales</p>
               </div>
               <i
@@ -142,7 +142,7 @@ const Dashboard = () => {
           <div className="col-md-3">
             <div className="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
               <div>
-                <h3 className="fs-2">3899</h3>
+                <h3 className="fs-3">3899</h3>
                 <p className="fs-5">Delivery</p>
               </div>
               <i className="fas fa-truck fs-1 primary-text border rounded-full secondary-bg p-3"></i>
@@ -152,7 +152,7 @@ const Dashboard = () => {
           <div className="col-md-3">
             <div className="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
               <div>
-                <h3 className="fs-2">%25</h3>
+                <h3 className="fs-3">%25</h3>
                 <p className="fs-5">Increase</p>
               </div>
               <i className="fas fa-chart-line fs-1 primary-text border rounded-full secondary-bg p-3"></i>
@@ -160,20 +160,13 @@ const Dashboard = () => {
           </div>
         </div>
 
-
-
-
         <div className="row mt-4 mx-2" >
           <h3 className="fs-4 mb-5">Income Statics</h3>
           <Column {...config} />
         </div>
 
-
-
-
-
         <div className="row my-5 mx-3 " >
-          <h3 className="fs-4 ps-4 my-3">Recent Orders</h3>
+          <h3 className="h3 mb-3 ps-3 my-3">Recent Orders</h3>
           <div className="col ">
             <Table columns={columns} dataSource={data1} />
           </div>
