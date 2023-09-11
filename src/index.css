@@ -24,6 +24,9 @@
   .rounded-full {
     border-radius: 100%;
   }
+  .custom-input{
+    height: 50px;
+  }
   
   #wrapper {
     overflow-x: hidden;
@@ -51,7 +54,7 @@
   
   #page-content-wrapper {
     min-width: 100vw;
-    background-color: snow;
+    background-color: ghostwhite;
   }
   
   #wrapper.toggled #sidebar-wrapper {

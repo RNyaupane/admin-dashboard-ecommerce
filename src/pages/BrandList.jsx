@@ -1,8 +1,10 @@
 import React from 'react'
 import { Column } from '@ant-design/plots';
 import { Button, Table } from 'antd';
+import { Link } from 'react-router-dom';
+import { AiOutlinePlusCircle } from 'react-icons/ai';
 
-const Customers = () => {
+const BrandList = () => {
     const columns = [
         {
             title: 'Serial No.',
@@ -34,7 +36,12 @@ const Customers = () => {
         <>
             <div className="container-fluid px-4">
                 <div className="row my-5 mx-3 ">
-                    <h3 className="h3 ps-4 my-3 mb-3">Customers</h3>
+                <div className='d-flex align-items-center justify-content-between mb-3'>
+                        <h3 className="fs-3 ps-2 my-3">Brands</h3>
+                        <Link to="/add-brand" className='text-decoration-none me-4 fs-6'>
+                            <AiOutlinePlusCircle className='pb-1' /> Add Brand
+                        </Link>
+                    </div>
                     <div className="col">
                         <Table columns={columns} dataSource={data1} />
                     </div>
@@ -44,4 +51,4 @@ const Customers = () => {
     )
 }
 
-export default Customers
+export default BrandList

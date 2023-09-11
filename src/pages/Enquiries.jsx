@@ -32,7 +32,7 @@ const Enquiries = () => {
       }
   return (
     <div className="container-fluid px-4">
-        <div className="row my-5 mx-3 shadow-sm">
+        <div className="row my-5 mx-3 ">
           <h3 className="fs-4 ps-4 my-3">Recent Orders</h3>
           <div className="col">
             <Table columns={columns} dataSource={data1} />

@@ -33,8 +33,8 @@ const Orders = () => {
     return (
         <>
             <div className="container-fluid px-4">
-                <div className="row my-5 mx-3 shadow-sm">
-                    <h3 className="fs-4 ps-4 my-3">Orders</h3>
+                <div className="row my-5 mx-3 ">
+                    <h3 className="h3 mb-3 ps-4 my-3">Orders</h3>
                     <div className="col">
                         <Table columns={columns} dataSource={data1} />
                     </div>

@@ -13,6 +13,15 @@ import BlogList from './pages/BlogList'
 import BlogcatList from './pages/BlogcatList'
 import Orders from './pages/Orders'
 import Customers from './pages/Customers'
+import Products from './pages/ProductList'
+import ProductCatList from './pages/ProductCatList'
+import BrandList from './pages/BrandList'
+import BrandCatList from './pages/BrandCatList'
+import AddBlog from './pages/AddBlog'
+import AddBlogCat from './pages/AddBlogCat'
+import AddProductCat from './pages/AddProductCat'
+import AddBrand from './pages/AddBrand'
+import AddProduct from './pages/AddProduct'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -24,9 +33,22 @@ function App() {
           <Route path='/' element={<MainLayout />}>
             <Route index element={<Dashboard />}></Route>
             <Route path='/customers' element={<Customers />}></Route>
-            <Route path='/enquiries' element={<Enquiries />}></Route>
+
+            <Route path='/products' element={<Products />}></Route>
+            <Route path='/product-category-list' element={<ProductCatList />}></Route>
+            <Route path='/add-product' element={<AddProduct />}></Route>
+            <Route path='/add-product-category' element={<AddProductCat />}></Route>
+
+            <Route path='/brands' element={<BrandList />}></Route>
+            <Route path='/brand-category-list' element={<BrandCatList />}></Route>
+            <Route path='/add-brand' element={<AddBrand />}></Route>
+
             <Route path='/blog-list' element={<BlogList/>}></Route>
             <Route path='/blog-catrogry-list' element={<BlogcatList/>}></Route>
+            <Route path='/add-blog' element={<AddBlog/>}></Route>
+            <Route path='/add-blog-category' element={<AddBlogCat/>}></Route>
+
+            <Route path='/enquiries' element={<Enquiries />}></Route>
             <Route path='/orders' element={<Orders/>}></Route>
           </Route>
           <Route path='/login' element={<Login />}></Route>

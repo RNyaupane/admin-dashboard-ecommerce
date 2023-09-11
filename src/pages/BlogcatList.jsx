@@ -1,6 +1,9 @@
 import React from 'react'
 import { Column } from '@ant-design/plots';
 import { Button, Table } from 'antd';
+import { Link } from 'react-router-dom';
+import { AiOutlinePlusCircle } from 'react-icons/ai';
+
 
 const BlogcatList = () => {
     const columns = [
@@ -33,8 +36,13 @@ const BlogcatList = () => {
     return (
         <>
             <div className="container-fluid px-4">
-                <div className="row my-5 mx-3 shadow-sm">
-                    <h3 className="fs-4 ps-4 my-3">Blog Categories</h3>
+                <div className="row my-5 mx-3 ">
+                    <div className='d-flex align-items-center justify-content-between mb-3'>
+                        <h3 className="fs-3 ps-2 my-3">Blog Categories</h3>
+                        <Link to="/add-blog-category" className='text-decoration-none me-4 fs-6'>
+                            <AiOutlinePlusCircle className='pb-1'/> Add Blog Category
+                        </Link>                    
+                    </div>
                     <div className="col">
                         <Table columns={columns} dataSource={data1} />
                     </div>

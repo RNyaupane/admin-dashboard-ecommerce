@@ -19,7 +19,7 @@ const MainLayout = () => {
         {/* <!-- Sidebar --> */}
         <div className="" style={{ backgroundColor: 'mintcream' }} id="sidebar-wrapper">
           <div className="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase">
-            <i className="fas fa-user-secret me-2"></i>Codersbite
+            <i className="fas fa-user-secret me-2"></i>Logo Here
           </div>
           <div className="list-group list-group-flush my-3">
 
@@ -30,7 +30,7 @@ const MainLayout = () => {
               <i className="fas fa-users me-2"></i>Customers
             </Link>
             <Link to="/orders" className="list-group-item list-group-item-action bg-transparent second-text fw-bold">
-              <i className="fas fa-users me-2"></i>Orders
+              <i className="fas fa-truck me-2"></i>Orders
             </Link>
             {/* Customers Menu with Down Arrow Icon */}
             {menuLinkData.map((props) => {
@@ -65,7 +65,7 @@ const MainLayout = () => {
               <i className="fas fa-gift me-2"></i>Sales
             </Link>
             <Link to='/enquiries' className="list-group-item list-group-item-action bg-transparent second-text fw-bold">
-              <i className="fas fa-map-marker-alt me-2"></i>Enquiries
+              <i className="fas fa-info-circle me-2"></i>Enquiries
             </Link>
             <Link to="" className="list-group-item list-group-item-action bg-transparent text-danger fw-bold">
               <i className="fas fa-power-off me-2"></i>Logout
@@ -102,7 +102,7 @@ const MainLayout = () => {
 
                   <a className="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"
                     role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i className="fas fa-user me-2 fs-5"></i>John Doe
+                    <i className="fas fa-user me-2 fs-5"></i>Profile Name
                   </a>
                   <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a className="dropdown-item" href="#">Profile</a></li>

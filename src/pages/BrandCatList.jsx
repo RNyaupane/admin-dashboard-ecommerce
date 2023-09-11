@@ -2,7 +2,7 @@ import React from 'react'
 import { Column } from '@ant-design/plots';
 import { Button, Table } from 'antd';
 
-const Customers = () => {
+const BrandCatList = () => {
     const columns = [
         {
             title: 'Serial No.',
@@ -34,7 +34,7 @@ const Customers = () => {
         <>
             <div className="container-fluid px-4">
                 <div className="row my-5 mx-3 ">
-                    <h3 className="h3 ps-4 my-3 mb-3">Customers</h3>
+                    <h3 className="fs-4 ps-4 my-3">Brand Categories</h3>
                     <div className="col">
                         <Table columns={columns} dataSource={data1} />
                     </div>
@@ -44,4 +44,4 @@ const Customers = () => {
     )
 }
 
-export default Customers
+export default BrandCatList

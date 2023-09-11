@@ -163,7 +163,7 @@ const Dashboard = () => {
 
 
 
-        <div className="row mt-4 mx-2">
+        <div className="row mt-4 mx-2" >
           <h3 className="fs-4 mb-5">Income Statics</h3>
           <Column {...config} />
         </div>
@@ -172,9 +172,9 @@ const Dashboard = () => {
 
 
 
-        <div className="row my-5 mx-3 " style={{ boxShadow: "rgba(17, 17, 26, 0.1) 0px 0px 16px" }}>
+        <div className="row my-5 mx-3 " >
           <h3 className="fs-4 ps-4 my-3">Recent Orders</h3>
-          <div className="col">
+          <div className="col ">
             <Table columns={columns} dataSource={data1} />
           </div>
         </div>
