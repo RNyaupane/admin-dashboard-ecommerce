@@ -1,0 +1,117 @@
+export const orders = [
+    {
+        id: "1",
+        product: "Television",
+        customer: "Roshan",
+        price: "1500",
+        date: Date.now(),
+    },
+    {
+        id: "2",
+        product: "Watch",
+        customer: "Gita",
+        price: "200",
+        date: Date.now(),
+    },
+    {
+        id: "3",
+        product: "Mobile",
+        customer: "Hari",
+        price: "5500",
+        date: Date.now(),
+    },
+    {
+        id: "4",
+        product: "Laptop",
+        customer: "Radha",
+        price: "3300",
+        date: Date.now(),
+    },
+    {
+        id: "5",
+        product: "Smartphone",
+        customer: "Durga",
+        price: "200",
+        date: Date.now(),
+    },
+    {
+        id: "6",
+        product: "Television",
+        customer: "Sagar",
+        price: "4500",
+        date: Date.now(),
+    },
+    {
+        id: "7",
+        product: "Smart TV",
+        customer: "Roshan",
+        price: "100",
+        date: Date.now(),
+    },
+    {
+        id: "8",
+        product: "Ear Buds",
+        customer: "Santosh",
+        price: "9900",
+        date: Date.now(),
+    },
+    {
+        id: "9",
+        product: "Watch",
+        customer: "Aaditya",
+        price: "200",
+        date: Date.now(),
+    },
+    {
+        id: "10",
+        product: "Paper",
+        customer: "Suraj",
+        price: "200",
+        date: Date.now(),
+    },
+    {
+        id: "11",
+        product: "Television",
+        customer: "Roshan",
+        price: "1800",
+        date: Date.now(),
+    },
+]
+
+export const menuLinkData = [
+    {
+        id: "catalogMenu",
+        label: "Product",
+        icon: "fas fa-shopping-cart",
+        submenu1: "Product List",
+        submenu2: "Category",
+        submenu3: "Add Product",
+        submenu1Link: "/login",
+        submenu2Link: "",
+        submenu3Link: "",
+    },
+    {
+        id: "brandMenu",
+        label: "Brands",
+        icon: "fas fa-store",
+        submenu1: "Order List",
+        submenu2: "Category",
+        submenu3: "Add Brand",
+        submenu1Link: "/login",
+        submenu2Link: "",
+        submenu3Link: "",
+    },
+    {
+        id: "blogMenu",
+        label: "Blogs",
+        icon: "fas fa-store",
+        submenu1: "Blog List",
+        submenu2: "Blog Category",
+        submenu3: "Add Blog",
+        submenu1Link: "/blog-list",
+        submenu2Link: "/blog-catrogry-list",
+        submenu3Link: "",
+    }
+]
+
+// export default {orders,menuLinkData};
