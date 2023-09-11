@@ -18,18 +18,18 @@ const MainLayout = () => {
 
         {/* <!-- Sidebar --> */}
         <div className="" style={{ backgroundColor: 'white' }} id="sidebar-wrapper">
-          <div className="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase">
-            <i className="fas fa-user-secret me-2"></i>Logo Here
+          <div className="sidebar-heading text-center py-4  fs-4 fw-bold text-uppercase">
+            Logo Here
           </div>
           <div className="list-group list-group-flush my-3" id="list-tab" role="tablist">
           
-            <Link to="/" className="list-group-item list-group-item-action bg-transparent second-text fw-bold border-bottom" >
+            <Link to="/" className="list-group-item list-group-item-action bg-transparent primary-text fw-bold border-bottom" >
               <i className="fas fa-tachometer-alt me-2"></i>Dashboard
             </Link>
-            <Link to="/customers" className="list-group-item list-group-item-action bg-transparent second-text fw-bold border-bottom" >
+            <Link to="/customers" className="list-group-item list-group-item-action bg-transparent primary-text fw-bold border-bottom" >
               <i className="fas fa-users me-2"></i>Customers
             </Link>
-            <Link to="/orders" className="list-group-item list-group-item-action bg-transparent second-text fw-bold border-bottom" >
+            <Link to="/orders" className="list-group-item list-group-item-action bg-transparent primary-text fw-bold border-bottom" >
               <i className="fas fa-truck me-2"></i>Orders
             </Link>
             {/* Customers Menu with Down Arrow Icon */}
@@ -38,7 +38,7 @@ const MainLayout = () => {
                 <div key={props.id} className='border-bottom'>
                   <a
                     href={`#${props.id}`}
-                    className="list-group-item list-group-item-action bg-transparent second-text fw-bold d-flex justify-content-between align-items-center"
+                    className="list-group-item list-group-item-action bg-transparent primary-text fw-bold d-flex justify-content-between align-items-center"
                     data-bs-toggle="collapse"
                     aria-expanded="false"
                   >
@@ -48,23 +48,23 @@ const MainLayout = () => {
                     <i className="fas fa-angle-down"></i> {/* Down Arrow Icon */}
                   </a>
                   <div className="list-group list-group-flush collapse ps-4" id={props.id}>
-                    <Link to={props.submenu1Link} className="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                    <Link to={props.submenu1Link} className="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
                       {props.submenu1}
                     </Link>
-                    <Link to={props.submenu2Link} className="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                    <Link to={props.submenu2Link} className="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
                       {props.submenu2}
                     </Link>
-                    <Link to={props.submenu3Link} className="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                    <Link to={props.submenu3Link} className="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
                       {props.submenu3}
                     </Link>
                   </div>
                 </div>
               )
             })}
-            <Link to="" className="list-group-item list-group-item-action bg-transparent second-text fw-bold border-bottom" >
+            <Link to="" className="list-group-item list-group-item-action bg-transparent primary-text fw-bold border-bottom" >
               <i className="fas fa-gift me-2"></i>Sales
             </Link>
-            <Link to='/enquiries' className="list-group-item list-group-item-action bg-transparent second-text fw-bold border-bottom" >
+            <Link to='/enquiries' className="list-group-item list-group-item-action bg-transparent primary-text fw-bold border-bottom" >
               <i className="fas fa-info-circle me-2"></i>Enquiries
             </Link>
             <Link to="" className="list-group-item list-group-item-action bg-transparent text-danger fw-bold border-bottom">
