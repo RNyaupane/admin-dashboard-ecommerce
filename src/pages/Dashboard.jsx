@@ -118,7 +118,7 @@ const Dashboard = () => {
     <>
       <div className="container-fluid px-4">
         <div className="row g-3 my-2">
-          <div className="col-md-3">
+          <div className="col-md-6 col-lg-3">
             <div className="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
               <div>
                 <h3 className="fs-3">720</h3>
@@ -128,7 +128,7 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className="col-md-3">
+          <div className="col-md-6 col-lg-3">
             <div className="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
               <div>
                 <h3 className="fs-3">4920</h3>
@@ -139,7 +139,7 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className="col-md-3">
+          <div className="col-md-6 col-lg-3">
             <div className="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
               <div>
                 <h3 className="fs-3">3899</h3>
@@ -149,7 +149,7 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className="col-md-3">
+          <div className="col-md-6 col-lg-3">
             <div className="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
               <div>
                 <h3 className="fs-3">%25</h3>

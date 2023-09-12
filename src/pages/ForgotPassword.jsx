@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import CustomInput from '../components/CustomInput'
 
 const ForgotPassword = () => {
   return (
@@ -12,8 +13,7 @@ const ForgotPassword = () => {
                 <h2 className="text-center text-dark mb-4">Forgot Password</h2>
                 <small>Enter a email address associated with your account and we will send reset password link.</small>
                 <div className="my-5">
-                  <input type="email" className="form-control" aria-describedby="emailHelp"
-                    placeholder="Enter your email" />
+                  <CustomInput type="email" label="Enter Your Email" />
                 </div>
                 <div className="text-center"><button type="submit" className="btn btn-color px-5 my-4 w-100 ">Submit</button></div>
                 <div id="emailHelp" className="form-text text-center mb-5 text-dark">Remember

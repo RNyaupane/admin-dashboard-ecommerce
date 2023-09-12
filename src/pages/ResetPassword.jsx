@@ -1,4 +1,5 @@
 import React from 'react'
+import CustomInput from '../components/CustomInput'
 
 const ResetPassword = () => {
   return (
@@ -11,11 +12,10 @@ const ResetPassword = () => {
                 <h2 className="text-center text-dark mb-3">Reset Password</h2>
 
                 <div className="mb-3 mt-5">
-                  <input type="password" className="form-control" id="Email" aria-describedby="emailHelp"
-                    placeholder="New Password" />
+                  <CustomInput type="password" label="New Password" />
                 </div>
                 <div className="mb-5">
-                  <input type="password" className="form-control" id="password" placeholder="Confirm New Password" />
+                <CustomInput type="password" label="Confirm New Password" />
                 </div>
                 <div className="text-center">
                   <button  className="btn btn-color px-5 mb-5 w-100 ">Reset</button>

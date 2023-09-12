@@ -38,6 +38,10 @@
   .ant-table-content{
     border: 1px solid #ececec;
   }
+  .error{
+    color: red;
+    font-size: 12px;
+  }
   
   #wrapper {
     overflow-x: hidden;
