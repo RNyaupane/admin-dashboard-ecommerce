@@ -20,6 +20,7 @@ const Login = () => {
     validationSchema: userSchema,
     onSubmit: values => {
       dispatch(login(values))
+      console.log(message)
     }
   })
 
@@ -28,12 +29,13 @@ const Login = () => {
 
   const { user, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
   useEffect(() => {
-    if (!user == null || isSuccess) {
+    if (isSuccess) {
       navigate("admin")
     }
     else {
+      navigate("")
     }
-  }, [user, isLoading, isError, isSuccess, message])
+  }, [user, isLoading, isError, isSuccess])
 
   return (
     <>
@@ -41,6 +43,12 @@ const Login = () => {
         <div className="row">
           <div className="col-md-6 col-lg-5 offset-md-4  ">
             <div className="card my-5 rounded-0">
+              {/* <div className="error-message py-2 text-center fs-5" style={{ backgroundColor: '#ebf2fa' }}>
+                You are not an admin
+              </div> */}
+              <div className={`${message == "Rejected" ? "" : "d-none"} alert alert-danger mb-0 rounded-0 text-center border-0`} role="alert">
+                <p className=' fade-in mb-0'>{message == "Rejected" ? "You are not an Admin !!" : ""}</p>
+              </div>
               <form className="card-body cardbody-color px-lg-5" onSubmit={formik.handleSubmit}>
                 <h2 className="text-center text-dark mb-3">Login</h2>
 
