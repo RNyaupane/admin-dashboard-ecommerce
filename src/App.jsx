@@ -30,28 +30,28 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<MainLayout />}>
+          <Route path='/admin' element={<MainLayout />}>
             <Route index element={<Dashboard />}></Route>
-            <Route path='/customers' element={<Customers />}></Route>
+            <Route path='customers' element={<Customers />}></Route>
 
-            <Route path='/products' element={<Products />}></Route>
-            <Route path='/product-category-list' element={<ProductCatList />}></Route>
-            <Route path='/add-product' element={<AddProduct />}></Route>
-            <Route path='/add-product-category' element={<AddProductCat />}></Route>
+            <Route path='products' element={<Products />}></Route>
+            <Route path='product-category-list' element={<ProductCatList />}></Route>
+            <Route path='add-product' element={<AddProduct />}></Route>
+            <Route path='add-product-category' element={<AddProductCat />}></Route>
 
-            <Route path='/brands' element={<BrandList />}></Route>
-            <Route path='/brand-category-list' element={<BrandCatList />}></Route>
-            <Route path='/add-brand' element={<AddBrand />}></Route>
+            <Route path='brands' element={<BrandList />}></Route>
+            <Route path='brand-category-list' element={<BrandCatList />}></Route>
+            <Route path='add-brand' element={<AddBrand />}></Route>
 
-            <Route path='/blog-list' element={<BlogList/>}></Route>
-            <Route path='/blog-catrogry-list' element={<BlogcatList/>}></Route>
-            <Route path='/add-blog' element={<AddBlog/>}></Route>
-            <Route path='/add-blog-category' element={<AddBlogCat/>}></Route>
+            <Route path='blog-list' element={<BlogList/>}></Route>
+            <Route path='blog-catrogry-list' element={<BlogcatList/>}></Route>
+            <Route path='add-blog' element={<AddBlog/>}></Route>
+            <Route path='add-blog-category' element={<AddBlogCat/>}></Route>
 
-            <Route path='/enquiries' element={<Enquiries />}></Route>
-            <Route path='/orders' element={<Orders/>}></Route>
+            <Route path='enquiries' element={<Enquiries />}></Route>
+            <Route path='orders' element={<Orders/>}></Route>
           </Route>
-          <Route path='/login' element={<Login />}></Route>
+          <Route path='/' element={<Login />}></Route>
           <Route path='/forgot-password' element={<ForgotPassword />}></Route>
           <Route path='/reset-password' element={<ResetPassword />}></Route>
         </Routes>

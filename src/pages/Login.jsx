@@ -20,7 +20,6 @@ const Login = () => {
     validationSchema: userSchema,
     onSubmit: values => {
       dispatch(login(values))
-      alert(JSON.stringify(values, null, 2));
     }
   })
 
@@ -33,7 +32,6 @@ const Login = () => {
       navigate("admin")
     }
     else {
-      alert("Not")
     }
   }, [user, isLoading, isError, isSuccess, message])
 
@@ -76,7 +74,7 @@ const Login = () => {
                     id="pass"
                     val={formik.values.password}
                     onCh={formik.handleChange('password')}
-                    onBl={formik.handleChange('email')}
+                    onBl={formik.handleChange('password')}
                   />
                   <div className="error">
                     {formik.touched.password && formik.errors.password ? (
