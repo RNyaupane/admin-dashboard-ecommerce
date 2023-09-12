@@ -86,9 +86,9 @@ export const menuLinkData = [
         submenu1: "Product List",
         submenu2: "Product Category",
         submenu3: "Add Product",
-        submenu1Link: "/products",
-        submenu2Link: "/product-category-list",
-        submenu3Link: "/add-product",
+        submenu1Link: "products",
+        submenu2Link: "product-category-list",
+        submenu3Link: "add-product",
     },
     {
         id: "brandMenu",
@@ -97,9 +97,9 @@ export const menuLinkData = [
         submenu1: "Brand List",
         submenu2: "Brand Category",
         submenu3: "Add Brand",
-        submenu1Link: "/brands",
-        submenu2Link: "/brand-category-list",
-        submenu3Link: "/add-brand",
+        submenu1Link: "brands",
+        submenu2Link: "brand-category-list",
+        submenu3Link: "add-brand",
     },
     {
         id: "blogMenu",
@@ -108,9 +108,9 @@ export const menuLinkData = [
         submenu1: "Blog List",
         submenu2: "Blog Category",
         submenu3: "Add Blog",
-        submenu1Link: "/blog-list",
-        submenu2Link: "/blog-catrogry-list",
-        submenu3Link: "/add-blog",
+        submenu1Link: "blog-list",
+        submenu2Link: "blog-catrogry-list",
+        submenu3Link: "add-blog",
     }
 ]
 

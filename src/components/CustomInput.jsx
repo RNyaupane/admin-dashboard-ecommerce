@@ -4,7 +4,7 @@ const CustomInput = (props) => {
     const { type, label, id, name, val, onCh, onBl } = props;
     return (
         <>
-            <div className="mt-3">
+            <div className="my-3">
                 <input
                     type={type}
                     className="form-control custom-input "

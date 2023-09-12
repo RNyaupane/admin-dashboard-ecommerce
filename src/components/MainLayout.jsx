@@ -23,13 +23,13 @@ const MainLayout = () => {
           </div>
           <div className="list-group list-group-flush my-3" id="list-tab" role="tablist">
           
-            <Link to="/" className="list-group-item list-group-item-action bg-transparent primary-text fw-bold border-bottom" >
+            <Link to="/admin" className="list-group-item list-group-item-action bg-transparent primary-text fw-bold border-bottom" >
               <i className="fas fa-tachometer-alt me-2"></i>Dashboard
             </Link>
-            <Link to="/customers" className="list-group-item list-group-item-action bg-transparent primary-text fw-bold border-bottom" >
+            <Link to="customers" className="list-group-item list-group-item-action bg-transparent primary-text fw-bold border-bottom" >
               <i className="fas fa-users me-2"></i>Customers
             </Link>
-            <Link to="/orders" className="list-group-item list-group-item-action bg-transparent primary-text fw-bold border-bottom" >
+            <Link to="orders" className="list-group-item list-group-item-action bg-transparent primary-text fw-bold border-bottom" >
               <i className="fas fa-truck me-2"></i>Orders
             </Link>
             {/* Customers Menu with Down Arrow Icon */}
@@ -64,10 +64,10 @@ const MainLayout = () => {
             <Link to="" className="list-group-item list-group-item-action bg-transparent primary-text fw-bold border-bottom" >
               <i className="fas fa-gift me-2"></i>Sales
             </Link>
-            <Link to='/enquiries' className="list-group-item list-group-item-action bg-transparent primary-text fw-bold border-bottom" >
+            <Link to='enquiries' className="list-group-item list-group-item-action bg-transparent primary-text fw-bold border-bottom" >
               <i className="fas fa-info-circle me-2"></i>Enquiries
             </Link>
-            <Link to="" className="list-group-item list-group-item-action bg-transparent text-danger fw-bold border-bottom">
+            <Link to="/" className="list-group-item list-group-item-action bg-transparent text-danger fw-bold border-bottom">
               <i className="fas fa-power-off me-2"></i>Logout
             </Link>
           </div>
@@ -77,7 +77,7 @@ const MainLayout = () => {
 
         <!-- Page Content --> */}
         <div id="page-content-wrapper">
-          <nav className="navbar navbar-expand-lg navbar-light bg-transparent py-4 px-4">
+          <nav className="navbar navbar-expand-lg navbar-light bg-white py-4 px-4">
             <div className="d-flex align-items-center">
               <i className="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle" onClick={toggleButtonHandler}></i>
               <h2 className="fs-2 m-0">Dashboard</h2>

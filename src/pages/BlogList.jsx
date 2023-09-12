@@ -39,7 +39,7 @@ const BlogList = () => {
                 <div className="row my-5 mx-3 ">
                     <div className='d-flex align-items-center justify-content-between mb-3'>
                         <h3 className="fs-3 ps-2 my-3">Blogs</h3>
-                        <Link to="/add-blog" className='text-decoration-none me-4 fs-6'>
+                        <Link to="/admin/add-blog" className='text-decoration-none me-4 fs-6'>
                             <AiOutlinePlusCircle className='pb-1' /> Add Blog
                         </Link>
                     </div>
