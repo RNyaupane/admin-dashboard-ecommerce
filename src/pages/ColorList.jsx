@@ -1,31 +1,48 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Column } from '@ant-design/plots';
 import { Button, Table } from 'antd';
 import { Link } from 'react-router-dom';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { getColors } from '../features/color/ColorSlice'
+import { BiEdit } from 'react-icons/bi'
+import { AiFillDelete } from 'react-icons/ai'
 
+const columns = [
+    {
+        title: 'S.N.',
+        dataIndex: 'key',
+    },
+    {
+        title: 'Color Name',
+        dataIndex: 'name',
+    },
+    {
+        title: 'Action',
+        dataIndex: 'action',
+    },
+];
 
 const ColorList = () => {
-    const columns = [
-        {
-            title: 'S.N.',
-            dataIndex: 'key',
-        },
-        {
-            title: 'Color Name',
-            dataIndex: 'name',
-        },
-        {
-            title: 'Status',
-            dataIndex: 'status',
-        },
-    ];
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getColors())
+    }, [])
+
+    const colorDataState = useSelector((state)=>state.color.colors)
+
     const data1 = [];
-    for (let i = 0; i < 46; i++) {
+    for (let i = 0; i < colorDataState.length; i++) {
         data1.push({
             key: i,
-            name: `Edward King ${i}`,
-            status: `London, Park Lane no. ${i}`,
+            name: colorDataState[i].title,
+            action:
+                <div>
+                    <Link className=''><BiEdit className='text-info fs-5' /></Link>&nbsp;
+                    <Link className='ms-2'><AiFillDelete className='text-danger fs-5' /></Link>
+                </div>
         });
     }
     return (
