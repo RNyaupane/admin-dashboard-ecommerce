@@ -1,35 +1,61 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Column } from '@ant-design/plots';
 import { Button, Table } from 'antd';
 import { Link } from 'react-router-dom';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { BiEdit } from 'react-icons/bi'
+import { AiFillDelete } from 'react-icons/ai'
+import { getProductCategories } from '../features/productCategory/pcategorySlice';
+
+
+const columns = [
+    {
+        title: 'S.N.',
+        dataIndex: 'key',
+    },
+    {
+        title: 'Categories',
+        dataIndex: 'title',
+    },
+    {
+        title: 'Created Date',
+        dataIndex: 'date',
+    },
+    {
+        title: 'Action',
+        dataIndex: 'action',
+    },
+];
 
 const ProductCatList = () => {
-    const columns = [
-        {
-            title: 'Serial No.',
-            dataIndex: 'key',
-        },
-        {
-            title: 'Name',
-            dataIndex: 'name',
-        },
-        {
-            title: 'Product',
-            dataIndex: 'product',
-        },
-        {
-            title: 'Status',
-            dataIndex: 'status',
-        },
-    ];
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getProductCategories())
+    }, [])
+
+    const pcategoriesState = useSelector((state) => state.productCategories.productCategories)
+    console.log(pcategoriesState)
     const data1 = [];
-    for (let i = 0; i < 46; i++) {
+
+    for (let i = 0; i < pcategoriesState.length; i++) {
+        const createdAt = new Date(pcategoriesState[i].createdAt);
+        const year = createdAt.getFullYear();
+        const month = createdAt.getMonth() + 1; // Months are 0-based, so add 1
+        const day = createdAt.getDate();
+
+        const formattedDate = `${year}-${month}-${day}`;
         data1.push({
-            key: i,
-            name: `Edward King ${i}`,
-            product: 32,
-            status: `London, Park Lane no. ${i}`,
+            key: i + 1,
+            title: pcategoriesState[i].title,
+            date: formattedDate,
+            action:
+                <div>
+                    <Link className=''><BiEdit className='text-info fs-5' /></Link>&nbsp;
+                    <Link className='ms-2'><AiFillDelete className='text-danger fs-5' /></Link>
+                </div>
         });
     }
     return (
