@@ -5,7 +5,7 @@ import { Button, Table } from 'antd';
 const Orders = () => {
     const columns = [
         {
-            title: 'Serial No.',
+            title: 'S.N.',
             dataIndex: 'key',
         },
         {

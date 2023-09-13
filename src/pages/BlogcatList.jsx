@@ -13,7 +13,7 @@ import { AiFillDelete } from 'react-icons/ai'
 
 const columns = [
     {
-        title: 'Serial No.',
+        title: 'S.N.',
         dataIndex: 'key',
     },
     {
