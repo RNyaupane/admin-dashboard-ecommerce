@@ -1,42 +1,55 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Column } from '@ant-design/plots';
 import { Button, Table } from 'antd';
 import { Link } from 'react-router-dom';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { getBrands } from '../features/brand/BrandSlice'
+import { BiEdit } from 'react-icons/bi'
+import { AiFillDelete } from 'react-icons/ai'
+
+
+const columns = [
+    {
+        title: 'S.N.',
+        dataIndex: 'key',
+    },
+    {
+        title: 'Brand Name',
+        dataIndex: 'name',
+    },
+    {
+        title: 'Action',
+        dataIndex: 'action',
+    },
+];
+
 
 const BrandList = () => {
-    const columns = [
-        {
-            title: 'Serial No.',
-            dataIndex: 'key',
-        },
-        {
-            title: 'Name',
-            dataIndex: 'name',
-        },
-        {
-            title: 'Product',
-            dataIndex: 'product',
-        },
-        {
-            title: 'Status',
-            dataIndex: 'status',
-        },
-    ];
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getBrands())
+    }, [])
+    const brandState = useSelector((state) => state.brand.brands)
     const data1 = [];
-    for (let i = 0; i < 46; i++) {
+    for (let i = 0; i < brandState.length; i++) {
         data1.push({
-            key: i,
-            name: `Edward King ${i}`,
-            product: 32,
-            status: `London, Park Lane no. ${i}`,
+            key: i + 1,
+            name: brandState[i].title,
+            action:
+                <div>
+                    <Link className=''><BiEdit className='text-info fs-5' /></Link>&nbsp;
+                    <Link className='ms-2'><AiFillDelete className='text-danger fs-5' /></Link>
+                </div>
         });
     }
     return (
         <>
             <div className="container-fluid px-4">
                 <div className="row my-5 mx-3 ">
-                <div className='d-flex align-items-center justify-content-between mb-3'>
+                    <div className='d-flex align-items-center justify-content-between mb-3'>
                         <h3 className="fs-3 ps-2 my-3">Brands</h3>
                         <Link to="/admin/add-brand" className='text-decoration-none me-4 fs-6'>
                             <AiOutlinePlusCircle className='pb-1' /> Add Brand
