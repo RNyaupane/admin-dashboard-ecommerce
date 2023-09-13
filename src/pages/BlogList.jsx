@@ -1,36 +1,71 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Column } from '@ant-design/plots';
 import { Button, Table } from 'antd';
 import { Link } from 'react-router-dom';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { getBlogs } from '../features/blogs/BlogSlice'
+import { BiEdit } from 'react-icons/bi'
+import { AiFillDelete } from 'react-icons/ai'
 
+const columns = [
+    {
+        title: 'S.N.',
+        dataIndex: 'key',
+    },
+    {
+        title: 'Blog Title',
+        dataIndex: 'title',
+    },
+    {
+        title: 'Views',
+        dataIndex: 'views',
+    },
+    {
+        title: 'Category',
+        dataIndex: 'category',
+    },
+    {
+        title: 'Likes',
+        dataIndex: 'likes',
+    },
+    {
+        title: 'Dislikes',
+        dataIndex: 'dislikes',
+    },
+    {
+        title: 'Action',
+        dataIndex: 'action',
+    },
+];
 
 const BlogList = () => {
-    const columns = [
-        {
-            title: 'Serial No.',
-            dataIndex: 'key',
-        },
-        {
-            title: 'Name',
-            dataIndex: 'name',
-        },
-        {
-            title: 'Product',
-            dataIndex: 'product',
-        },
-        {
-            title: 'Status',
-            dataIndex: 'status',
-        },
-    ];
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getBlogs())
+    }, [])
+
+    const blogDataState = useSelector((state) => state.blog.blogs);
+
     const data1 = [];
-    for (let i = 0; i < 46; i++) {
+    for (let i = 0; i < blogDataState.length; i++) {
+        const likesCount = blogDataState[i].likes.length;
+        const dislikesCount = blogDataState[i].dislikes.length;
         data1.push({
-            key: i,
-            name: `Edward King ${i}`,
-            product: 32,
-            status: `London, Park Lane no. ${i}`,
+            key: i + 1,
+            title: blogDataState[i].title,
+            views: blogDataState[i].numViews,
+            category: blogDataState[i].category,
+            likes: likesCount,
+            dislikes: dislikesCount,
+            action:
+            <div className='d-flex'>
+                <Link className=''><BiEdit className='text-info fs-5' /></Link>&nbsp;
+                <Link className='ms-2'><AiFillDelete className='text-danger fs-5' /></Link>
+            </div>
+
         });
     }
     return (

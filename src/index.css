@@ -20,7 +20,6 @@
     background-color: #2f7aeb;
     border-color: #2f7aeb;
   }
-  
   .primary-bg {
     background-color: var(--main-bg-color);
   }
@@ -28,7 +27,6 @@
   .secondary-bg {
     background-color: var(--second-bg-color);
   }
-  
   .rounded-full {
     border-radius: 100%;
   }
@@ -37,6 +35,9 @@
   }
   .ant-table-content{
     border: 1px solid #ececec;
+  }
+  .ant-table-tbody{
+    background-color: white;
   }
   .error{
     color: red;
@@ -154,3 +155,18 @@
       opacity: 1;
     }
   }
+
+  /* Set the width of the scrollbar thumb */
+::-webkit-scrollbar {
+  width: 0px; /* You can adjust this value to set the width as needed */
+}
+
+/* Style the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color of the scrollbar thumb */
+}
+
+/* Style the scrollbar track */
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Color of the scrollbar track */
+}

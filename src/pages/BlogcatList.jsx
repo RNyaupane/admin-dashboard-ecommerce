@@ -1,36 +1,60 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Column } from '@ant-design/plots';
 import { Button, Table } from 'antd';
 import { Link } from 'react-router-dom';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { getBlogCategory } from '../features/blogCategory/bcategorySlice'
+import { BiEdit } from 'react-icons/bi'
+import { AiFillDelete } from 'react-icons/ai'
 
+
+
+const columns = [
+    {
+        title: 'Serial No.',
+        dataIndex: 'key',
+    },
+    {
+        title: 'Title',
+        dataIndex: 'title',
+    },
+    {
+        title: 'Created',
+        dataIndex: 'createdDate',
+    },
+    {
+        title: 'Action',
+        dataIndex: 'action',
+    },
+];
 
 const BlogcatList = () => {
-    const columns = [
-        {
-            title: 'Serial No.',
-            dataIndex: 'key',
-        },
-        {
-            title: 'Name',
-            dataIndex: 'name',
-        },
-        {
-            title: 'Product',
-            dataIndex: 'product',
-        },
-        {
-            title: 'Status',
-            dataIndex: 'status',
-        },
-    ];
+   
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getBlogCategory())
+    }, [])
+    const blogCatDataState = useSelector((state)=>state.blogCategory.blogCategories)
+    
     const data1 = [];
-    for (let i = 0; i < 46; i++) {
+    for (let i = 0; i < blogCatDataState.length; i++) {
+        const createdAt = new Date(blogCatDataState[i].createdAt);
+        const year = createdAt.getFullYear();
+        const month = createdAt.getMonth() + 1; // Months are 0-based, so add 1
+        const day = createdAt.getDate();
+        const formattedDate = `${year}-${month}-${day}`;
         data1.push({
-            key: i,
-            name: `Edward King ${i}`,
-            product: 32,
-            status: `London, Park Lane no. ${i}`,
+            key: i+1,
+            title: blogCatDataState[i].title,
+            createdDate: formattedDate,
+            action:
+            <div className='d-flex'>
+                <Link className=''><BiEdit className='text-info fs-5' /></Link>&nbsp;
+                <Link className='ms-2'><AiFillDelete className='text-danger fs-5' /></Link>
+            </div>
         });
     }
     return (

@@ -56,7 +56,7 @@ const Products = () => {
             category: productState[i].category,
             price: `$ ${productState[i].price}`,
             action:
-                <div>
+                <div className='d-flex'>
                     <Link className=''><BiEdit className='text-info fs-5' /></Link>&nbsp;
                     <Link className='ms-2'><AiFillDelete className='text-danger fs-5' /></Link>
                 </div>
