@@ -111,7 +111,18 @@ export const menuLinkData = [
         submenu1Link: "blog-list",
         submenu2Link: "blog-catrogry-list",
         submenu3Link: "add-blog",
+    },
+    {
+        id: "colorMenu",
+        label: "Colors",
+        icon: "fas fa-fill-drip",
+        submenu1: "Color List",
+        submenu2: "",
+        submenu3: "Add Color",
+        submenu1Link: "color-list",
+        submenu3Link: "add-color",
     }
+
 ]
 
 // export default {orders,menuLinkData};

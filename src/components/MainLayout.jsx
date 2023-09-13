@@ -6,7 +6,7 @@ import { Outlet } from 'react-router-dom';
 
 const MainLayout = () => {
   const [isToggled, setIsToggled] = useState(false);
-
+  const [menuLinkTwo, setMenuLinkTwo] = useState('')
   const toggleButtonHandler = () => {
     setIsToggled(!isToggled);
   };
@@ -22,7 +22,7 @@ const MainLayout = () => {
             Logo Here
           </div>
           <div className="list-group list-group-flush my-3" id="list-tab" role="tablist">
-          
+
             <Link to="/admin" className="list-group-item list-group-item-action bg-transparent primary-text fw-bold border-bottom" >
               <i className="fas fa-tachometer-alt me-2"></i>Dashboard
             </Link>
@@ -51,9 +51,16 @@ const MainLayout = () => {
                     <Link to={props.submenu1Link} className="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
                       {props.submenu1}
                     </Link>
-                    <Link to={props.submenu2Link} className="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
-                      {props.submenu2}
-                    </Link>
+
+                    {props.submenu2.trim() === '' ? (
+                      <Link to={props.submenu2Link} className="list-group-item list-group-item-action bg-transparent primary-text fw-bold d-none">
+                        {props.submenu2}
+                      </Link>
+                    ) : (
+                      <Link to={props.submenu2Link} className="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
+                        {props.submenu2}
+                      </Link>
+                    )}
                     <Link to={props.submenu3Link} className="list-group-item list-group-item-action bg-transparent primary-text fw-bold">
                       {props.submenu3}
                     </Link>
