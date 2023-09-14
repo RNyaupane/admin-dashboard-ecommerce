@@ -65,8 +65,8 @@ const Products = () => {
 
     return (
         <>
-            <div className="container-fluid px-4">
-                <div className="row my-5 mx-3 ">
+            <div className="container-fluid px-0 px-md-4">
+                <div className="row my-5 mx-0 mx-md-3">
                     <h3 className="h3 ps-3 my-3 mb-3">Product Lists</h3>
                     <div className="col">
                         <Table columns={columns} dataSource={data1} />

@@ -116,8 +116,8 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="container-fluid px-4">
-        <div className="row g-3 my-2">
+      <div className="container-fluid px-2 md-px-4">
+        <div className="row g-3 my-2 px-5 md-px-1">
           <div className="col-md-6 col-lg-3">
             <div className="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded">
               <div>
@@ -165,7 +165,7 @@ const Dashboard = () => {
           <Column {...config} />
         </div>
 
-        <div className="row my-5 mx-3 " >
+        <div className="row my-5 mx-0 mx-md-3 " >
           <h3 className="h3 mb-3 ps-3 my-3">Recent Orders</h3>
           <div className="col ">
             <Table columns={columns} dataSource={data1} />

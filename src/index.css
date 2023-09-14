@@ -23,7 +23,9 @@
   .primary-bg {
     background-color: var(--main-bg-color);
   }
-  
+  .w-md-75{
+    width: 100%;
+  }
   .secondary-bg {
     background-color: var(--second-bg-color);
   }
@@ -97,7 +99,9 @@
     #sidebar-wrapper {
       margin-left: 0;
     }
-  
+    .w-md-75{
+      width: 85%;
+    }
     #page-content-wrapper {
       min-width: 0;
       width: 100%;

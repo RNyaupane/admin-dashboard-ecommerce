@@ -32,8 +32,8 @@ const BrandCatList = () => {
     }
     return (
         <>
-            <div className="container-fluid px-4">
-                <div className="row my-5 mx-3 ">
+            <div className="container-fluid px-0 md-px-4">
+                <div className="row my-5 mx-0 mx-md-3 ">
                     <h3 className="h3 pb-3 ps-3 my-3">Brand Categories</h3>
                     <div className="col">
                         <Table columns={columns} dataSource={data1} />

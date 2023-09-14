@@ -59,12 +59,12 @@ const BlogcatList = () => {
     }
     return (
         <>
-            <div className="container-fluid px-4">
-                <div className="row my-5 mx-3 ">
+            <div className="container-fluid px-0 md-px-4">
+                <div className="row my-5 mx-0 mx-md-3 ">
                     <div className='d-flex align-items-center justify-content-between mb-3'>
                         <h3 className="fs-3 ps-2 my-3">Blog Categories</h3>
                         <Link to="/admin/add-blog-category" className='text-decoration-none me-4 fs-6'>
-                            <AiOutlinePlusCircle className='pb-1'/> Add Blog Category
+                            <AiOutlinePlusCircle className='pb-1'/> Add <span className='d-none d-sm-inline'>Blog Category</span>
                         </Link>                    
                     </div>
                     <div className="col">

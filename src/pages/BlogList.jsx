@@ -61,17 +61,17 @@ const BlogList = () => {
             likes: likesCount,
             dislikes: dislikesCount,
             action:
-            <div className='d-flex'>
-                <Link className=''><BiEdit className='text-info fs-5' /></Link>&nbsp;
-                <Link className='ms-2'><AiFillDelete className='text-danger fs-5' /></Link>
-            </div>
+                <div className='d-flex'>
+                    <Link className=''><BiEdit className='text-info fs-5' /></Link>&nbsp;
+                    <Link className='ms-2'><AiFillDelete className='text-danger fs-5' /></Link>
+                </div>
 
         });
     }
     return (
         <>
-            <div className="container-fluid px-4">
-                <div className="row my-5 mx-3 ">
+            <div className="container-fluid px-0 md-px-4">
+                <div className="row my-5 mx-0 mx-md-3 ">
                     <div className='d-flex align-items-center justify-content-between mb-3'>
                         <h3 className="fs-3 ps-2 my-3">Blogs</h3>
                         <Link to="/admin/add-blog" className='text-decoration-none me-4 fs-6'>

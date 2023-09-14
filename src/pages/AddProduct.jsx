@@ -36,7 +36,7 @@ const AddProduct = () => {
 
     return (
         <>
-            <div className='container-fluid my-5 w-75'>
+            <div className='container-fluid my-5 w-md-75'>
                 <h3 className='mb-4'>Add Product</h3>
                 <div className="">
                     <form action="">
