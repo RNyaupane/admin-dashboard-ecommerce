@@ -98,12 +98,13 @@ const MainLayout = () => {
 
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
-              <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+              <ul className="navbar-nav ms-auto my-4 text-center mb-lg-0">
                 <a className=" me-0 me-lg-3 nav-link second-text fw-bold position-relative" role="button">
                   <i className="fas fa-bell me-2 fs-5"></i>
-                  <span className="position-absolute start-50  badge rounded-circle bg-danger" style={{ top: "-2px", fontSize: '0.75rem', padding: '2px 5px' }}>
+                  <span className="position-absolute start-50 d-none d-lg-block  badge rounded-circle bg-danger" style={{ top: "-2px", fontSize: '0.75rem', padding: '2px 5px' }}>
                     5 {/* You can replace this number with your actual notification count */}
                   </span>
+                  <span className='d-lg-none'>Notifications</span>
                 </a>
                 <li className="nav-item dropdown d-block d-lg-flex">
                   <a className="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"
