@@ -95,7 +95,7 @@ export const menuLinkData = [
         label: "Brands",
         icon: "fas fa-briefcase",
         submenu1: "Brand List",
-        submenu2: "Brand Category",
+        submenu2: "",
         submenu3: "Add Brand",
         submenu1Link: "brands",
         submenu2Link: "brand-category-list",
