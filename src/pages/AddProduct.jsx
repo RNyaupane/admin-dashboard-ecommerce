@@ -9,6 +9,7 @@ import { getBrands } from '../features/brand/BrandSlice'
 import { getProductCategories } from '../features/productCategory/pcategorySlice';
 import { getColors } from '../features/color/ColorSlice'
 import Multiselect from "react-widgets/Multiselect";
+import Dropzone from 'react-dropzone'
 import "react-widgets/styles.css";
 
 
@@ -17,10 +18,12 @@ import "react-widgets/styles.css";
 let userSchema = Yup.object({
     title: Yup.string().required('Title is required'),
     description: Yup.string().required('Description is required'),
-    price: Yup.string().required('Price is required'),
+    price: Yup.number().required('Price is required'),
     brand: Yup.string().required('Brand is required'),
     category: Yup.string().required('Category is required'),
     color: Yup.array().required('Colors are required'),
+    quantity: Yup.number().required('Quantity is required'),
+
 });
 
 const AddProduct = () => {
@@ -49,7 +52,11 @@ const AddProduct = () => {
         initialValues: {
             title: '',
             description: '',
-            price: ''
+            price: '',
+            brand: '',
+            category: '',
+            color: '',
+            quantity: ''
         },
         validationSchema: userSchema,
         onSubmit: values => {
@@ -109,7 +116,11 @@ const AddProduct = () => {
                             onCh={formik.handleChange("price")}
                         />
 
-
+                        <div className="error">
+                            {formik.touched.brand && formik.errors.brand ? (
+                                <div>{formik.errors.brand}</div>
+                            ) : null}
+                        </div>
                         <select
                             className="form-select form-select-md custom-input mb-3"
                             aria-label=".form-select-lg example"
@@ -117,9 +128,8 @@ const AddProduct = () => {
                             onChange={formik.handleChange("brand")}
                             onBlur={formik.handleBlur("brand")}
                             value={formik.values.brand}
-                            defaultValue='0'
                         >
-                            <option value='0' disabled>Select Brand</option>
+                            <option value='0'>Select Brand</option>
                             {
                                 brandState.map((i, j) => {
                                     return (
@@ -134,7 +144,11 @@ const AddProduct = () => {
                             }
                         </select>
 
-
+                        <div className="error">
+                            {formik.touched.category && formik.errors.category ? (
+                                <div>{formik.errors.category}</div>
+                            ) : null}
+                        </div>
                         <select
                             className="form-select form-select-md custom-input mb-3"
                             aria-label=".form-select-lg example"
@@ -142,9 +156,8 @@ const AddProduct = () => {
                             onChange={formik.handleChange("category")}
                             onBlur={formik.handleBlur("category")}
                             value={formik.values.category}
-                            defaultValue='0'
                         >
-                            <option value='0' disabled>Select Category</option>
+                            <option value='defaultCategory'>Select Category</option>
 
                             {
                                 catState.map((i, j) => {
@@ -156,7 +169,11 @@ const AddProduct = () => {
                             }
                         </select>
 
-
+                        <div className="error">
+                            {formik.touched.color && formik.errors.color ? (
+                                <div>{formik.errors.color}</div>
+                            ) : null}
+                        </div>
                         <Multiselect
                             className='mb-3'
                             dataKey="id"
@@ -168,14 +185,32 @@ const AddProduct = () => {
                         />
 
 
+                        <div className="error">
+                            {formik.touched.quantity && formik.errors.quantity ? (
+                                <div>{formik.errors.quantity}</div>
+                            ) : null}
+                        </div>
                         <CustomInput
                             type="number"
                             label="Enter Quantity"
+                            name="quantity"
+                            val={formik.values.quantity}
+                            onBl={formik.handleBlur("quantity")}
+                            onCh={formik.handleChange("quantity")}
 
                         />
-                        <div className="mt-4">
 
-
+                        <div className="mt-4 bg-white border-1 p-5 text-center">
+                            <Dropzone onDrop={acceptedFiles => console.log(acceptedFiles)}>
+                                {({ getRootProps, getInputProps }) => (
+                                    <section>
+                                        <div {...getRootProps()}>
+                                            <input {...getInputProps()} />
+                                            <p>Drag 'n' drop some files here, or click to select files</p>
+                                        </div>
+                                    </section>
+                                )}
+                            </Dropzone>
                         </div>
 
                         <button type="submit" className="btn btn-success mt-5 px-5 fs-5">

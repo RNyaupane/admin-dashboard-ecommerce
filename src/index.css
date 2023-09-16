@@ -73,7 +73,7 @@
   }
   
   #page-content-wrapper {
-    min-width: auto;
+    min-width: 100vh;
     background-color: #edf0f791;
   }
   
