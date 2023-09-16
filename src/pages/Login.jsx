@@ -59,6 +59,11 @@ const Login = () => {
                 </div>
 
                 <div className="mb-3">
+                  <div className="error">
+                    {formik.touched.email && formik.errors.email ? (
+                      <div>{formik.errors.email}</div>
+                    ) : null}
+                  </div>
                   <CustomInput
                     type="text"
                     name="email"
@@ -68,13 +73,14 @@ const Login = () => {
                     onCh={formik.handleChange('email')}
                     onBl={formik.handleChange('email')}
                   />
-                  <div className="error">
-                    {formik.touched.email && formik.errors.email ? (
-                      <div>{formik.errors.email}</div>
-                    ) : null}
-                  </div>
+
                 </div>
                 <div className="mb-3">
+                  <div className="error">
+                    {formik.touched.password && formik.errors.password ? (
+                      <div>{formik.errors.password}</div>
+                    ) : null}
+                  </div>
                   <CustomInput
                     type="password"
                     name="password"
@@ -84,11 +90,7 @@ const Login = () => {
                     onCh={formik.handleChange('password')}
                     onBl={formik.handleChange('password')}
                   />
-                  <div className="error">
-                    {formik.touched.password && formik.errors.password ? (
-                      <div>{formik.errors.password}</div>
-                    ) : null}
-                  </div>
+
                 </div>
                 <div className="text-center">
                   <button type="submit" className="btn btn-color px-5 my-4 ">Login</button>

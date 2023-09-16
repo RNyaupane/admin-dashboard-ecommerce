@@ -4,7 +4,7 @@ const CustomInput = (props) => {
     const { type, label, id, name, val, onCh, onBl } = props;
     return (
         <>
-            <div className="my-3">
+            <div className="mb-3">
                 <input
                     type={type}
                     className="form-control custom-input "
@@ -14,7 +14,7 @@ const CustomInput = (props) => {
                     name={name}
                     value={val}
                     onChange={onCh}
-                    onBlur={onCh}
+                    onBlur={onBl}
                 />
                 {/* <div id="emailHelp" className="form-text text-danger">Enter Valid Title</div> */}
             </div>

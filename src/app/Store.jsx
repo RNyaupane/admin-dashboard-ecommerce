@@ -14,7 +14,7 @@ const store = configureStore({
         customer: customerReducer,
         product: productReducer,
         brand: brandReducer,
-        productCategories: productCategoryReducer,
+        productCategory: productCategoryReducer,
         color: colorReducer,
         blog: blogReducer,
         blogCategory: blogCategoryReducer,

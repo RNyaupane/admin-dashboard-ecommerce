@@ -40,7 +40,7 @@ const Dashboard = () => {
     },
     {
       type: 'Feb',
-      sales: 52,
+      sales: 100,
     },
     {
       type: 'Mar',
@@ -56,7 +56,7 @@ const Dashboard = () => {
     },
     {
       type: 'Jun',
-      sales: 38,
+      sales: 78,
     },
     {
       type: 'Jul',
@@ -72,11 +72,11 @@ const Dashboard = () => {
     },
     {
       type: 'Oct',
-      sales: 38,
+      sales: 62,
     },
     {
       type: 'Nov',
-      sales: 38,
+      sales: 88,
     },
     {
       type: 'Dec',

@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { base_url } from '../../utils/base_url'
-const getUser = localStorage.getItem('user') ? JSON.parse(localStorage.getItem("user")) : null
-
+const getUser = localStorage.getItem('user') ? JSON.parse(localStorage.getItem("user")) : ""
 const config = {
     headers: {
         'Authorization': `Bearer ${getUser.token}`,

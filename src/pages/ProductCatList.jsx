@@ -36,8 +36,7 @@ const ProductCatList = () => {
         dispatch(getProductCategories())
     }, [])
 
-    const pcategoriesState = useSelector((state) => state.productCategories.productCategories)
-    console.log(pcategoriesState)
+    const pcategoriesState = useSelector((state) => state.productCategory.productCategories)
     const data1 = [];
 
     for (let i = 0; i < pcategoriesState.length; i++) {
