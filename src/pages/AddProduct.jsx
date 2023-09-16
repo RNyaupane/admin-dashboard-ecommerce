@@ -11,6 +11,8 @@ import { getColors } from '../features/color/ColorSlice'
 import Multiselect from "react-widgets/Multiselect";
 import Dropzone from 'react-dropzone'
 import "react-widgets/styles.css";
+import { delImg, uploadImg } from '../features/upload/uploadSlice';
+import { createProducts } from '../features/product/ProductSlice';
 
 
 
@@ -29,16 +31,18 @@ let userSchema = Yup.object({
 const AddProduct = () => {
     const dispatch = useDispatch()
     const [color, setColor] = useState([]);
+    const [images, setImages] = useState([]);
+
     useEffect(() => {
         dispatch(getBrands())
         dispatch(getProductCategories())
         dispatch(getColors())
-        formik.values.color = color;
     }, [])
 
     const brandState = useSelector((state) => state.brand.brands);
     const catState = useSelector((state) => state.productCategory.productCategories);
     const colorState = useSelector((state) => state.color.colors);
+    const imgState = useSelector((state) => state.upload.images);
 
     const colors = [];
     colorState.forEach(i => {
@@ -47,6 +51,18 @@ const AddProduct = () => {
             color: i.title
         })
     })
+    const img = [];
+    imgState.forEach(i => {
+        img.push({
+            public_id: i.publi_url,
+            url: i.url
+        })
+    })
+    
+    useEffect(() => {
+        formik.values.color = color;
+        formik.values.images = img;
+    }, [color,img])
 
     const formik = useFormik({
         initialValues: {
@@ -55,12 +71,13 @@ const AddProduct = () => {
             price: '',
             brand: '',
             category: '',
-            color: '',
-            quantity: ''
+            color: [],
+            quantity: '',
+            images:''
         },
         validationSchema: userSchema,
         onSubmit: values => {
-            alert(JSON.stringify(values));
+            dispatch(createProducts(values))
         }
     })
 
@@ -201,7 +218,7 @@ const AddProduct = () => {
                         />
 
                         <div className="mt-4 bg-white border-1 p-5 text-center">
-                            <Dropzone onDrop={acceptedFiles => console.log(acceptedFiles)}>
+                            <Dropzone onDrop={acceptedFiles => dispatch(uploadImg(acceptedFiles))}>
                                 {({ getRootProps, getInputProps }) => (
                                     <section>
                                         <div {...getRootProps()}>
@@ -211,6 +228,16 @@ const AddProduct = () => {
                                     </section>
                                 )}
                             </Dropzone>
+                        </div>
+                        <div className="showimages mt-4 d-flex flex-wrap gap-3">
+                            {imgState?.map((i, j) => {
+                                return (
+                                    <div className="position-relative" key={j}>
+                                        <button onClick={() => dispatch(delImg(i.public_id))} type='button' className="btn-close position-absolute" style={{ top: "4px", right: "5px" }}></button>
+                                        <img src={i.url} alt="" width={200} height={200} />
+                                    </div>
+                                )
+                            })}
                         </div>
 
                         <button type="submit" className="btn btn-success mt-5 px-5 fs-5">
