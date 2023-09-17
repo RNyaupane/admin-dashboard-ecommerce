@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import Dashboard from '../pages/Dashboard';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
 import { menuLinkData } from '../utils/Data'
 import { Outlet } from 'react-router-dom';
@@ -120,7 +122,17 @@ const MainLayout = () => {
               </ul>
             </div>
           </nav>
-
+          <ToastContainer
+            position="top-right"
+            autoClose={250}
+            hideProgressBar={false}
+            newestOnTop={true}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            theme="light"
+          />
           <Outlet />
         </div>
       </div>

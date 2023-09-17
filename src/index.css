@@ -52,6 +52,9 @@
   .ql-editor{
     height: 150px;
   }
+  .ant-select-selection-overflow{
+    height: 48px;
+  }
   
  
   #sidebar-wrapper {
