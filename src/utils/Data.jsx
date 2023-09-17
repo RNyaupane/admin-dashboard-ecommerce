@@ -109,7 +109,7 @@ export const menuLinkData = [
         submenu2: "Blog Category",
         submenu3: "Add Blog",
         submenu1Link: "blog-list",
-        submenu2Link: "blog-catrogry-list",
+        submenu2Link: "blog-category-list",
         submenu3Link: "add-blog",
     },
     {

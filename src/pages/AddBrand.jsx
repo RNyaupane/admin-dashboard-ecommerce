@@ -24,7 +24,7 @@ const AddBrand = () => {
 
 
     useEffect(() => {
-        if (isSuccess && createdBrand ) {
+        if (isSuccess && createdBrand) {
             toast.success('Brand added successfully!');
         }
         if (isError) {
@@ -56,7 +56,7 @@ const AddBrand = () => {
                         ) : null}
                     </div>
                     <CustomInput
-className="form-control custom-input"
+                        className="form-control custom-input"
                         type="text"
                         label="Enter Brand"
                         id="brand"
