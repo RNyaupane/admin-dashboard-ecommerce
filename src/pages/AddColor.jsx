@@ -12,6 +12,7 @@ let colorSchema = Yup.object({
 });
 
 const AddColor = () => {
+    const [selectedColor, setSelectedColor] = useState('')
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -46,13 +47,10 @@ const AddColor = () => {
             <h3 className='mb-4'>Add Color</h3>
             <div className="">
                 <form action="" onSubmit={formik.handleSubmit}>
-                    <div className="error">
-                        {formik.touched.title && formik.errors.title ? (
-                            <div>{formik.errors.title}</div>
-                        ) : null}
-                    </div>
+                    <label htmlFor="exampleColorInput" className="form-label mb-4 text-secondary">(Cick dark box to open color picker)</label>
                     <CustomInput
-                        type="text"
+                        type="color"
+                        className="form-control form-control-color mb-0 p-0 border-0 shadow-none h-100"
                         label="Enter Color Name"
                         id="color"
                         name="title"
@@ -60,6 +58,12 @@ const AddColor = () => {
                         onCh={formik.handleChange("title")}
                         onBl={formik.handleBlur("title")}
                     />
+                    <input className='form-control w-auto' id='selectedColor' disabled value={formik.values.title}></input>
+                    <div className="error">
+                        {formik.touched.title && formik.errors.title ? (
+                            <div>{formik.errors.title}</div>
+                        ) : null}
+                    </div>
                     <button type="submit" className="btn btn-success mt-4 px-5 fs-5">
                         Add
                     </button>

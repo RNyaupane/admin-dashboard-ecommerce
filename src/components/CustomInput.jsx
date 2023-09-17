@@ -1,13 +1,13 @@
 import React from 'react'
 
 const CustomInput = (props) => {
-    const { type, label, id, name, val, onCh, onBl } = props;
+    const { type, label, id, name, val, onCh, onBl, className } = props;
     return (
         <>
             <div className="mb-3">
                 <input
                     type={type}
-                    className="form-control custom-input "
+                    className={className}
                     placeholder={label}
                     aria-describedby="emailHelp"
                     id={id}

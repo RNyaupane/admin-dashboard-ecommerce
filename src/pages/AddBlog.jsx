@@ -46,7 +46,8 @@ const AddBlog = () => {
             /> */}
             <div className="">
                 <form action="">
-                    <CustomInput type="text" label="Enter Blog Title"/>
+                    <CustomInput
+className="form-control custom-input" type="text" label="Enter Blog Title"/>
                     <select className="form-select form-select-md custom-input mb-3" aria-label=".form-select-lg example" defaultValue='0'>
                         <option value='0' disabled>Select Category</option>
                         <option value="1">One</option>

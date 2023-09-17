@@ -65,6 +65,7 @@ const Login = () => {
                     ) : null}
                   </div>
                   <CustomInput
+className="form-control custom-input"
                     type="text"
                     name="email"
                     label="Enter Email"
@@ -82,6 +83,7 @@ const Login = () => {
                     ) : null}
                   </div>
                   <CustomInput
+className="form-control custom-input"
                     type="password"
                     name="password"
                     label="Enter Password"

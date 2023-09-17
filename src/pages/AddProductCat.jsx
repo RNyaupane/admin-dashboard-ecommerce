@@ -54,6 +54,7 @@ const AddProductCat = () => {
                         ) : null}
                     </div>
                     <CustomInput
+className="form-control custom-input"
                         type="text"
                         label="Enter Product Category"
                         id="category"

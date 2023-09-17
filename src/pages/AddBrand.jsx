@@ -56,6 +56,7 @@ const AddBrand = () => {
                         ) : null}
                     </div>
                     <CustomInput
+className="form-control custom-input"
                         type="text"
                         label="Enter Brand"
                         id="brand"
