@@ -11,7 +11,7 @@ import { getColors } from '../features/color/ColorSlice'
 import { Select } from 'antd';
 import Dropzone from 'react-dropzone'
 import { delImg, uploadImg } from '../features/upload/uploadSlice';
-import { createProducts } from '../features/product/ProductSlice';
+import { createProducts, resetState } from '../features/product/ProductSlice';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -96,6 +96,7 @@ const AddProduct = () => {
             formik.resetForm();
             setColor(null);
             setTimeout(() => {
+                dispatch(resetState())
                 navigate('/admin/products')
             }, 3000)
         }

@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { useFormik } from "formik"
 import * as Yup from 'yup'; //For Form Validation
 import CustomInput from '../components/CustomInput';
-import { createColor } from '../features/color/ColorSlice';
+import { createColor, resetState } from '../features/color/ColorSlice';
 
 let colorSchema = Yup.object({
     title: Yup.string().required('Color name is required'),
@@ -37,6 +37,7 @@ const AddColor = () => {
             dispatch(createColor(values));
             formik.resetForm();
             setTimeout(() => {
+                dispatch(resetState())
                 navigate('/admin/color-list')
             }, 3000)
         }

@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 import { delImg, uploadImg } from '../features/upload/uploadSlice';
 import { useNavigate } from 'react-router-dom';
 import { getBlogCategory } from '../features/blogCategory/bcategorySlice';
-import { createBlogs } from '../features/blogs/BlogSlice'
+import { createBlogs, resetState } from '../features/blogs/BlogSlice'
 
 let userSchema = Yup.object({
     title: Yup.string().required('Title is required'),
@@ -71,6 +71,7 @@ const AddBlog = () => {
             dispatch(createBlogs(values))
             formik.resetForm();
             setTimeout(() => {
+                dispatch(resetState())
                 navigate('/admin/blog-list')
             }, 3000)
         }

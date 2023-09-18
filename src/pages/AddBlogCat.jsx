@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useFormik } from "formik"
 import * as Yup from 'yup'; //For Form Validation
-import { createBlogCategory } from '../features/blogCategory/bcategorySlice';
+import { createBlogCategory, resetState } from '../features/blogCategory/bcategorySlice';
 
 
 let blogCategorySchema = Yup.object({
@@ -39,6 +39,7 @@ const AddBlogCat = () => {
             dispatch(createBlogCategory(values))
             formik.resetForm();
             setTimeout(() => {
+                dispatch(resetState())
                 navigate('/admin/blog-category-list')
             }, 3000)
         }

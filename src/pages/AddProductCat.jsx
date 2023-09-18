@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { useFormik } from "formik"
 import * as Yup from 'yup'; //For Form Validation
 import CustomInput from '../components/CustomInput';
-import {createCategory} from '../features/productCategory/pcategorySlice' 
+import { createCategory, resetState } from '../features/productCategory/pcategorySlice'
 
 let productCatSchema = Yup.object({
     title: Yup.string().required('Category name is required'),
@@ -38,6 +38,7 @@ const AddProductCat = () => {
             dispatch(createCategory(values));
             formik.resetForm();
             setTimeout(() => {
+                dispatch(resetState())
                 navigate('/admin/product-category-list')
             }, 3000)
         }
@@ -54,7 +55,7 @@ const AddProductCat = () => {
                         ) : null}
                     </div>
                     <CustomInput
-className="form-control custom-input"
+                        className="form-control custom-input"
                         type="text"
                         label="Enter Product Category"
                         id="category"

@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useFormik } from "formik"
 import * as Yup from 'yup'; //For Form Validation
-import { createBrand } from '../features/brand/BrandSlice';
+import { createBrand, resetState } from '../features/brand/BrandSlice';
 
 
 
@@ -41,6 +41,7 @@ const AddBrand = () => {
             dispatch(createBrand(values))
             formik.resetForm();
             setTimeout(() => {
+                dispatch(resetState())
                 navigate('/admin/brands')
             }, 3000)
         }
