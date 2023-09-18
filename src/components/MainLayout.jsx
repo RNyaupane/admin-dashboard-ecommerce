@@ -100,7 +100,7 @@ const MainLayout = () => {
 
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
-              <ul className="navbar-nav ms-auto my-4 text-center mb-lg-0">
+              <ul className="navbar-nav ms-auto text-center mb-lg-0">
                 <a className=" me-0 me-lg-3 nav-link second-text fw-bold position-relative" role="button">
                   <i className="fas fa-bell me-2 fs-5"></i>
                   <span className="position-absolute start-50 d-none d-lg-block  badge rounded-circle bg-danger" style={{ top: "-2px", fontSize: '0.75rem', padding: '2px 5px' }}>
