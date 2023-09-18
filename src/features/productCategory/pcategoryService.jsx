@@ -10,10 +10,27 @@ const createProductCategory = async (category) => {
     const response = await axios.post(`${base_url}productcategory/`, category, config);
     return response.data;
 };
+const updateProductCategory = async (brand) => {
+    const response = await axios.put(`${base_url}productcategory/${brand.id}`, {title:brand.brandData.title}, config);
+    return response.data;
+};
+
+const getProductCategory = async (id) => {
+    const response = await axios.get(`${base_url}productcategory/${id}`, config);
+    return response.data;
+};
+
+const deleteProductCategory = async (id) => {
+    const response = await axios.delete(`${base_url}productcategory/${id}`, config);
+    return response.data;
+};
 
 const ProductCategoryService = {
     getProductCategories,
     createProductCategory,
+    updateProductCategory,
+    getProductCategory,
+    deleteProductCategory,
 }
 
 export default ProductCategoryService;
