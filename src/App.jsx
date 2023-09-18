@@ -24,6 +24,8 @@ import AddBrand from './pages/AddBrand'
 import AddProduct from './pages/AddProduct'
 import ColorList from './pages/ColorList'
 import AddColor from './pages/AddColor'
+import CouponList from './pages/CouponList'
+import AddCoupon from './pages/AddCoupon'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -51,6 +53,9 @@ function App() {
 
             <Route path='color-list' element={<ColorList />}></Route>
             <Route path='add-color' element={<AddColor />}></Route>
+
+            <Route path='coupon-list' element={<CouponList />}></Route>
+            <Route path='add-coupon' element={<AddCoupon />}></Route>
 
             <Route path='enquiries' element={<Enquiries />}></Route>
             <Route path='orders' element={<Orders />}></Route>

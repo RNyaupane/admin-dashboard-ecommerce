@@ -121,6 +121,16 @@ export const menuLinkData = [
         submenu3: "Add Color",
         submenu1Link: "color-list",
         submenu3Link: "add-color",
+    },
+    {
+        id: "couponMenu",
+        label: "Coupon",
+        icon: "fas fa-gift",
+        submenu1: "Coupon List",
+        submenu2: "",
+        submenu3: "Add Coupon",
+        submenu1Link: "coupon-list",
+        submenu3Link: "add-coupon",
     }
 
 ]
