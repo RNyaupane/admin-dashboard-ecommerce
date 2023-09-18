@@ -117,7 +117,7 @@ const AddProduct = () => {
                             ) : null}
                         </div>
                         <CustomInput
-className="form-control custom-input"
+                            className="form-control custom-input"
                             type="text"
                             label="Enter Product Title"
                             name="title"
@@ -150,7 +150,7 @@ className="form-control custom-input"
                             ) : null}
                         </div>
                         <CustomInput
-className="form-control custom-input"
+                            className="form-control custom-input"
                             type="number"
                             label="Enter Product Price"
                             name="price"
@@ -257,7 +257,7 @@ className="form-control custom-input"
                             ) : null}
                         </div>
                         <CustomInput
-className="form-control custom-input"
+                            className="form-control custom-input"
                             type="number"
                             label="Enter Quantity"
                             name="quantity"
