@@ -7,7 +7,7 @@ const CustomModel = (props) => {
     return (
         <>
             <Modal
-                title="Modal"
+                title="Delete Confrimation"
                 open={open}
                 onOk={performAction}
                 onCancel={hideModal}

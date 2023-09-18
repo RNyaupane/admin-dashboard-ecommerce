@@ -2,7 +2,7 @@ import axios from 'axios'
 import { base_url } from '../../utils/base_url'
 import { config } from '../../utils/axiosConfig';
 
-const getProductCategories = async()=>{
+const getProductCategories = async () => {
     const response = await axios.get(`${base_url}productcategory/`);
     return response.data;
 }
@@ -10,8 +10,9 @@ const createProductCategory = async (category) => {
     const response = await axios.post(`${base_url}productcategory/`, category, config);
     return response.data;
 };
-const updateProductCategory = async (brand) => {
-    const response = await axios.put(`${base_url}productcategory/${brand.id}`, {title:brand.brandData.title}, config);
+const updateProductCategory = async (category) => {
+    console.log(category);
+    const response = await axios.put(`${base_url}productcategory/${category.id}`, { title: category.pCategoryData.title }, config);
     return response.data;
 };
 

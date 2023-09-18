@@ -38,7 +38,7 @@ const AddBrand = () => {
         if (isSuccess && createdBrand) {
             toast.success('Brand added successfully!');
         }
-        if(updatedBrand && isSuccess){
+        if (updatedBrand && isSuccess) {
             toast.success("Brand updated successfully")
             navigate('/admin/brands')
         }
@@ -48,7 +48,7 @@ const AddBrand = () => {
     }, [isSuccess, isError, isLoading])
 
     const formik = useFormik({
-        enableReinitialize:true,
+        enableReinitialize: true,
         initialValues: {
             title: brandName || '',
         },
@@ -90,7 +90,7 @@ const AddBrand = () => {
                     />
 
                     <button type="submit" className="btn btn-success mt-4 px-5 fs-5">
-                    {getBrandId !== undefined ? "Update" : "Add"}
+                        {getBrandId !== undefined ? "Update" : "Add"}
                     </button>
                 </form>
             </div>

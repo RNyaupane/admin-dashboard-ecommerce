@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Column } from '@ant-design/plots';
 import { Button, Table } from 'antd';
 import { Link } from 'react-router-dom';
@@ -7,7 +7,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { BiEdit } from 'react-icons/bi'
 import { AiFillDelete } from 'react-icons/ai'
-import { getProductCategories } from '../features/productCategory/pcategorySlice';
+import { deleteProductCategory, getProductCategories, resetState } from '../features/productCategory/pcategorySlice';
+import CustomModel from '../components/CustomModel';
+import { toast } from 'react-toastify';
+
 
 
 const columns = [
@@ -32,9 +35,23 @@ const columns = [
 const ProductCatList = () => {
     const dispatch = useDispatch();
 
+    const [open, setOpen] = useState(false);
+    const [pCatId, setpCatId] = useState('')
+
+    const showModal = (e) => {
+        setOpen(true);
+        setpCatId(e)
+    };
+    const hideModal = () => {
+        setOpen(false);
+    };
+
     useEffect(() => {
+        dispatch(resetState())
         dispatch(getProductCategories())
     }, [])
+
+
 
     const pcategoriesState = useSelector((state) => state.productCategory.productCategories)
     const data1 = [];
@@ -52,10 +69,23 @@ const ProductCatList = () => {
             date: formattedDate,
             action:
                 <div className='d-flex'>
-                    <Link className=''><BiEdit className='text-info fs-5' /></Link>&nbsp;
-                    <Link className='ms-2'><AiFillDelete className='text-danger fs-5' /></Link>
+                    <Link to={`/admin/add-product-category/${pcategoriesState[i]._id}`}>
+                        <BiEdit className='text-info fs-5' /></Link>&nbsp;
+                    <button
+                        className='ms-2 bg-transparent border-0'
+                        onClick={() => showModal(pcategoriesState[i]._id)}>
+                        <AiFillDelete className='text-danger fs-5' />
+                    </button>
                 </div>
         });
+    }
+    const delProductCategory = (e) => {
+        dispatch(deleteProductCategory(e))
+        setOpen(false);
+        setTimeout(() => {
+            dispatch(getProductCategories())
+        }, 100)
+        toast.error('Product deleted successfully!');
     }
     return (
         <>
@@ -70,6 +100,12 @@ const ProductCatList = () => {
                     <div className="col">
                         <Table columns={columns} dataSource={data1} />
                     </div>
+                    <CustomModel
+                        title='Are you sure want to delete this product category?'
+                        hideModal={hideModal}
+                        open={open}
+                        performAction={() => delProductCategory(pCatId)}
+                    />
                 </div>
             </div>
         </>
