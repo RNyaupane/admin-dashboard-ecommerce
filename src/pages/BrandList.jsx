@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { getBrands } from '../features/brand/BrandSlice'
+import { getBrands, resetState } from '../features/brand/BrandSlice'
 import { BiEdit } from 'react-icons/bi'
 import { AiFillDelete } from 'react-icons/ai'
 
@@ -30,6 +30,7 @@ const BrandList = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
+        dispatch(resetState())
         dispatch(getBrands())
     }, [])
     const brandState = useSelector((state) => state.brand.brands)
@@ -40,7 +41,7 @@ const BrandList = () => {
             name: brandState[i].title,
             action:
                 <div className='d-flex'>
-                    <Link className=''><BiEdit className='text-info fs-5' /></Link>&nbsp;
+                    <Link to={`/admin/add-brand/${brandState[i]._id}`} className=''><BiEdit className='text-info fs-5' /></Link>&nbsp;
                     <Link className='ms-2'><AiFillDelete className='text-danger fs-5' /></Link>
                 </div>
         });
