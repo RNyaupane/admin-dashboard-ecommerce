@@ -1,13 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Column } from '@ant-design/plots';
 import { Button, Table } from 'antd';
 import { Link } from 'react-router-dom';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { getBrands, resetState } from '../features/brand/BrandSlice'
+import { deleteBrand, getBrands, resetState } from '../features/brand/BrandSlice'
 import { BiEdit } from 'react-icons/bi'
 import { AiFillDelete } from 'react-icons/ai'
+import { toast } from 'react-toastify';
+import CustomModel from '../components/CustomModel';
 
 
 const columns = [
@@ -29,6 +31,17 @@ const columns = [
 const BrandList = () => {
     const dispatch = useDispatch()
 
+    const [open, setOpen] = useState(false);
+    const [brandId, setBrandId] = useState('')
+
+    const showModal = (e) => {
+        setOpen(true);
+        setBrandId(e)
+    };
+    const hideModal = () => {
+        setOpen(false);
+    };
+
     useEffect(() => {
         dispatch(resetState())
         dispatch(getBrands())
@@ -42,9 +55,21 @@ const BrandList = () => {
             action:
                 <div className='d-flex'>
                     <Link to={`/admin/add-brand/${brandState[i]._id}`} className=''><BiEdit className='text-info fs-5' /></Link>&nbsp;
-                    <Link className='ms-2'><AiFillDelete className='text-danger fs-5' /></Link>
+                    <button
+                        className='ms-2 bg-transparent border-0'
+                        onClick={() => showModal(brandState[i]._id)}>
+                        <AiFillDelete className='text-danger fs-5' />
+                    </button>
                 </div>
         });
+    }
+    const delBrand = (e) => {
+        dispatch(deleteBrand(e))
+        setOpen(false);
+        setTimeout(()=>{
+            dispatch(getBrands())
+        },100)
+        toast.error('Brand deleted successfully!');
     }
     return (
         <>
@@ -59,6 +84,12 @@ const BrandList = () => {
                     <div className="col">
                         <Table columns={columns} dataSource={data1} />
                     </div>
+                    <CustomModel
+                        title='Are you sure?'
+                        hideModal={hideModal}
+                        open={open}
+                        performAction={() => delBrand(brandId)}
+                    />
                 </div>
             </div>
         </>

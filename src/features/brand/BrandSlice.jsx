@@ -42,6 +42,17 @@ export const updateBrand = createAsyncThunk(
     }
 )
 
+export const deleteBrand = createAsyncThunk(
+    'brand/delete-brand',
+    async (id, thunkAPI) => {
+        try {
+            return await BrandService.deleteBrand(id);
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error)
+        }
+    }
+)
+
 export const resetState = createAction('Reset_all')
 
 const initialState = {
@@ -114,6 +125,21 @@ export const BrandSlice = createSlice({
                 state.updatedBrand = action.payload;
             })
             .addCase(updateBrand.rejected, (state, action) => {
+                state.isLoading = false;
+                state.isError = true;
+                state.isSuccess = false;
+                state.message = action.error;
+            })
+            .addCase(deleteBrand.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(deleteBrand.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.isError = false;
+                state.isSuccess = true;
+                state.deletedBrand = action.payload;
+            })
+            .addCase(deleteBrand.rejected, (state, action) => {
                 state.isLoading = false;
                 state.isError = true;
                 state.isSuccess = false;
