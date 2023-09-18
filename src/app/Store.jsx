@@ -9,6 +9,7 @@ import blogReducer from '../features/blogs/BlogSlice'
 import blogCategoryReducer from '../features/blogCategory/bcategorySlice'
 import enquiryReducer from '../features/enquiry/enquirySlice'
 import uploadReducer from '../features/upload/uploadSlice'
+import couponReducer from '../features/coupon/CouponSlice'
 const store = configureStore({
     reducer: {
         auth: authReducer,
@@ -20,7 +21,9 @@ const store = configureStore({
         blog: blogReducer,
         blogCategory: blogCategoryReducer,
         enquiry:enquiryReducer,
+        coupon:couponReducer,
         upload:uploadReducer,
+
     },
 })
 
