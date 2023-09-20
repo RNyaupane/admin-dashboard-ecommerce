@@ -23,7 +23,6 @@ const store = configureStore({
         enquiry:enquiryReducer,
         coupon:couponReducer,
         upload:uploadReducer,
-
     },
 })
 

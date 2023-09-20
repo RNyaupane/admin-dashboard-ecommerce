@@ -1,12 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import CustomInput from '../components/CustomInput'
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useFormik } from "formik"
 import * as Yup from 'yup'; //For Form Validation
 import { createCoupon, resetState } from '../features/coupon/CouponSlice';
-
 
 
 let couponSchema = Yup.object({
@@ -20,6 +19,8 @@ const AddCoupon = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const location = useLocation();
+    const getCouponId = location.pathname.split('/')[3];
 
     const newCoupon = useSelector((state) => state.coupon)
     const { isSuccess, isError, isLoading, createdCoupon } = newCoupon;

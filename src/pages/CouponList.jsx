@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Column } from '@ant-design/plots';
 import { Button, Table } from 'antd';
 import { Link } from 'react-router-dom';
@@ -7,7 +7,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { BiEdit } from 'react-icons/bi'
 import { AiFillDelete } from 'react-icons/ai'
-import { getCoupons } from '../features/coupon/CouponSlice';
+import { deleteCoupon, getCoupons } from '../features/coupon/CouponSlice';
+import { toast } from 'react-toastify';
+import CustomModel from '../components/CustomModel';
 
 
 const columns = [
@@ -37,9 +39,21 @@ const columns = [
 const CouponList = () => {
     const dispatch = useDispatch()
 
+    const [open, setOpen] = useState(false);
+    const [couponId, setCouponId] = useState('')
+
+    const showModal = (e) => {
+        setOpen(true);
+        setCouponId(e)
+    };
+    const hideModal = () => {
+        setOpen(false);
+    };
+
     useEffect(() => {
         dispatch(getCoupons())
     }, [])
+
     const couponState = useSelector((state) => state.coupon.coupons)
     const data1 = [];
     for (let i = 0; i < couponState.length; i++) {
@@ -51,14 +65,26 @@ const CouponList = () => {
         data1.push({
             key: i + 1,
             name: couponState[i].name,
-            discount:couponState[i].discount,
-            expiry:formattedDate,
+            discount: couponState[i].discount,
+            expiry: formattedDate,
             action:
                 <div className='d-flex'>
-                    <Link className=''><BiEdit className='text-info fs-5' /></Link>&nbsp;
-                    <Link className='ms-2'><AiFillDelete className='text-danger fs-5' /></Link>
+                    <Link to={`/admin/add-coupon/${couponState[i]._id}`} className=''><BiEdit className='text-info fs-5' /></Link>&nbsp;
+                    <button
+                        className='ms-2 bg-transparent border-0'
+                        onClick={() => showModal(couponState[i]._id)}>
+                        <AiFillDelete className='text-danger fs-5' />
+                    </button>
                 </div>
         });
+    }
+    const delCoupon = (e) => {
+        dispatch(deleteCoupon(e))
+        setOpen(false);
+        // setTimeout(()=>{
+        dispatch(getCoupons())
+        // },100)
+        // toast.error('Brand deleted successfully!');
     }
     return (
         <>
@@ -73,6 +99,12 @@ const CouponList = () => {
                     <div className="col">
                         <Table columns={columns} dataSource={data1} />
                     </div>
+                    <CustomModel
+                        title='Are you sure want to delete this coupon?'
+                        hideModal={hideModal}
+                        open={open}
+                        performAction={() => delCoupon(couponId)}
+                    />
                 </div>
             </div>
         </>

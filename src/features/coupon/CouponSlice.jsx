@@ -21,6 +21,39 @@ export const createCoupon = createAsyncThunk(
         }
     }
 )
+
+export const getCoupon = createAsyncThunk(
+    'Coupon/get-coupon',
+    async (id, thunkAPI) => {
+        try {
+            return await CouponService.getCoupon(id);
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error)
+        }
+    }
+)
+export const updateCoupon = createAsyncThunk(
+    'Coupon/update-coupon',
+    async (coupon, thunkAPI) => {
+        try {
+            return await CouponService.updateCoupon(brand);
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error)
+        }
+    }
+)
+
+export const deleteCoupon = createAsyncThunk(
+    'Coupon/delete-coupon',
+    async (id, thunkAPI) => {
+        try {
+            return await CouponService.deleteCoupon(id);
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error)
+        }
+    }
+)
+
 export const resetState = createAction('Reset_all')
 
 const initialState = {
@@ -53,6 +86,8 @@ export const CouponSlice = createSlice({
                 state.isSuccess = false;
                 state.message = action.error;
             })
+
+
             .addCase(createCoupon.pending, (state) => {
                 state.isLoading = true;
             })
@@ -68,6 +103,24 @@ export const CouponSlice = createSlice({
                 state.isSuccess = false;
                 state.message = action.error;
             })
+
+
+            .addCase(deleteCoupon.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(deleteCoupon.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.isError = false;
+                state.isSuccess = true;
+                state.deletedCoupon = action.payload;
+            })
+            .addCase(deleteCoupon.rejected, (state, action) => {
+                state.isLoading = false;
+                state.isError = true;
+                state.isSuccess = false;
+                state.message = action.error;
+            })
+
             .addCase(resetState, () => initialState)
     },
 })
