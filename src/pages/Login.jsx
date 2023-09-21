@@ -65,7 +65,7 @@ const Login = () => {
                     ) : null}
                   </div>
                   <CustomInput
-className="form-control custom-input"
+                    className="form-control custom-input"
                     type="text"
                     name="email"
                     label="Enter Email"
@@ -83,7 +83,7 @@ className="form-control custom-input"
                     ) : null}
                   </div>
                   <CustomInput
-className="form-control custom-input"
+                    className="form-control custom-input"
                     type="password"
                     name="password"
                     label="Enter Password"
