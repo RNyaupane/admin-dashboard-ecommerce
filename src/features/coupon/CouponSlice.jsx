@@ -36,7 +36,7 @@ export const updateCoupon = createAsyncThunk(
     'Coupon/update-coupon',
     async (coupon, thunkAPI) => {
         try {
-            return await CouponService.updateCoupon(brand);
+            return await CouponService.updateCoupon(coupon);
         } catch (error) {
             return thunkAPI.rejectWithValue(error)
         }
@@ -87,6 +87,24 @@ export const CouponSlice = createSlice({
                 state.message = action.error;
             })
 
+            .addCase(getCoupon.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(getCoupon.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.isError = false;
+                state.isSuccess = true;
+                state.couponName = action.payload.name;
+                state.couponExpiry = action.payload.expiry;
+                state.couponDiscount = action.payload.discount;
+            })
+            .addCase(getCoupon.rejected, (state, action) => {
+                state.isLoading = false;
+                state.isError = true;
+                state.isSuccess = false;
+                state.message = action.error;
+            })
+
 
             .addCase(createCoupon.pending, (state) => {
                 state.isLoading = true;
@@ -115,6 +133,22 @@ export const CouponSlice = createSlice({
                 state.deletedCoupon = action.payload;
             })
             .addCase(deleteCoupon.rejected, (state, action) => {
+                state.isLoading = false;
+                state.isError = true;
+                state.isSuccess = false;
+                state.message = action.error;
+            })
+
+            .addCase(updateCoupon.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(updateCoupon.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.isError = false;
+                state.isSuccess = true;
+                state.updatedCoupon = action.payload;
+            })
+            .addCase(updateCoupon.rejected, (state, action) => {
                 state.isLoading = false;
                 state.isError = true;
                 state.isSuccess = false;
