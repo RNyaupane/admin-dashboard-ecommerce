@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
 import { menuLinkData } from '../utils/Data'
 import { Outlet } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const MainLayout = () => {
   const [isToggled, setIsToggled] = useState(false);
@@ -13,6 +14,8 @@ const MainLayout = () => {
     setIsToggled(!isToggled);
   };
 
+  const firstName = useSelector((state) => state.auth.user.firstname)
+  const lastName = useSelector((state) => state.auth.user.lastname)
 
   return (
     <>
@@ -111,7 +114,7 @@ const MainLayout = () => {
                 <li className="nav-item dropdown d-block d-lg-flex">
                   <a className="nav-link dropdown-toggle second-text fw-bold" href="#" id="navbarDropdown"
                     role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i className="fas fa-user me-2 fs-5"></i>Profile Name
+                    <i className="fas fa-user me-2 fs-5"></i>{firstName + " " + lastName}
                   </a>
                   <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a className="dropdown-item" href="#">Profile</a></li>
