@@ -9,7 +9,7 @@ import Dropzone from 'react-dropzone'
 import { toast } from 'react-toastify';
 import { delImg, uploadImg } from '../features/upload/uploadSlice';
 import { useNavigate } from 'react-router-dom';
-import { getBlogCategory } from '../features/blogCategory/bcategorySlice';
+import { getBlogCategories } from '../features/blogCategory/bcategorySlice';
 import { createBlogs, resetState } from '../features/blogs/BlogSlice'
 
 let userSchema = Yup.object({
@@ -27,7 +27,7 @@ const AddBlog = () => {
     const navigate = useNavigate()
 
     useEffect(() => {
-        dispatch(getBlogCategory())
+        dispatch(getBlogCategories())
     }, [])
 
     const editorRef = useRef(null);

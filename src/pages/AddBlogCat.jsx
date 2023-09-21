@@ -1,12 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import CustomInput from '../components/CustomInput'
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useFormik } from "formik"
 import * as Yup from 'yup'; //For Form Validation
-import { createBlogCategory, resetState } from '../features/blogCategory/bcategorySlice';
-
+import { createBlogCategory, getSingleBlogCategory, resetState, updateBlogCategory } from '../features/blogCategory/bcategorySlice';
 
 let blogCategorySchema = Yup.object({
     title: Yup.string().required('Blog category name is required'),
@@ -16,14 +15,26 @@ const AddBlogCat = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const location = useLocation();
+    const getBlogCatId = location.pathname.split('/')[3];
 
-    const newBrand = useSelector((state) => state.blogCategory)
-    const { isSuccess, isError, isLoading, createdBlogCategory } = newBrand;
+    const newBlogCat = useSelector((state) => state.blogCategory)
+    const { isSuccess, isError, isLoading, createdBlogCategory, updatedBlogCategory, blogCatName } = newBlogCat;
 
+    useEffect(() => {
+        if (getBlogCatId !== undefined) {
+            dispatch(getSingleBlogCategory(getBlogCatId))
+        } else {
+            dispatch(resetState())
+        }
+    }, [getBlogCatId])
 
     useEffect(() => {
         if (isSuccess && createdBlogCategory) {
             toast.success('Blog Category added successfully!');
+        }
+        if (isSuccess && updatedBlogCategory) {
+            toast.success('Blog Category Updated successfully!');
         }
         if (isError) {
             toast.error('Something went wrong!');
@@ -31,17 +42,27 @@ const AddBlogCat = () => {
     }, [isSuccess, isError, isLoading])
 
     const formik = useFormik({
+        enableReinitialize: true,
         initialValues: {
-            title: '',
+            title: blogCatName || '',
         },
         validationSchema: blogCategorySchema,
         onSubmit: values => {
-            dispatch(createBlogCategory(values))
-            formik.resetForm();
-            setTimeout(() => {
-                dispatch(resetState())
-                navigate('/admin/blog-category-list')
-            }, 3000)
+            if (getBlogCatId !== undefined) {
+                const data = { id: getBlogCatId, blogCatData: values }
+                dispatch(updateBlogCategory(data))
+                setTimeout(() => {
+                    dispatch(resetState())
+                    navigate('/admin/blog-category-list')
+                }, 2000)
+            } else {
+                dispatch(createBlogCategory(values))
+                formik.resetForm();
+                setTimeout(() => {
+                    dispatch(resetState())
+                    navigate('/admin/blog-category-list')
+                }, 2000)
+            }
         }
     })
 
