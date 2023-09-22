@@ -1,13 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Column } from '@ant-design/plots';
 import { Button, Table } from 'antd';
 import { Link } from 'react-router-dom';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { getBlogs } from '../features/blogs/BlogSlice'
+import { deleteBlog, getBlogs, resetState } from '../features/blogs/BlogSlice'
 import { BiEdit } from 'react-icons/bi'
 import { AiFillDelete } from 'react-icons/ai'
+import { toast } from 'react-toastify';
+import CustomModel from '../components/CustomModel';
+
 
 const columns = [
     {
@@ -42,8 +45,19 @@ const columns = [
 
 const BlogList = () => {
     const dispatch = useDispatch();
+    const [open, setOpen] = useState(false);
+    const [blogId, setBlogId] = useState('')
+
+    const showModal = (e) => {
+        setOpen(true);
+        setBlogId(e)
+    };
+    const hideModal = () => {
+        setOpen(false);
+    };
 
     useEffect(() => {
+        dispatch(resetState())
         dispatch(getBlogs())
     }, [])
 
@@ -62,11 +76,23 @@ const BlogList = () => {
             dislikes: dislikesCount,
             action:
                 <div className='d-flex'>
-                    <Link className=''><BiEdit className='text-info fs-5' /></Link>&nbsp;
-                    <Link className='ms-2'><AiFillDelete className='text-danger fs-5' /></Link>
+                    <Link to={`/admin/add-blog/${blogDataState[i].id}`} className=''><BiEdit className='text-info fs-5' /></Link>&nbsp;
+                    <button
+                        className='ms-2 bg-transparent border-0'
+                        onClick={() => showModal(blogDataState[i]._id)}>
+                        <AiFillDelete className='text-danger fs-5' />
+                    </button>
                 </div>
 
         });
+    }
+    const delBlog = (e) => {
+        dispatch(deleteBlog(e))
+        setOpen(false);
+        setTimeout(()=>{
+            dispatch(getBlogs())
+        },100)
+        toast.error('Blog deleted successfully!');
     }
     return (
         <>
@@ -81,6 +107,12 @@ const BlogList = () => {
                     <div className="col">
                         <Table columns={columns} dataSource={data1} />
                     </div>
+                    <CustomModel
+                        title='Are you sure want to delete this blog?'
+                        hideModal={hideModal}
+                        open={open}
+                        performAction={() => delBlog(blogId)}
+                    />
                 </div>
             </div>
         </>
