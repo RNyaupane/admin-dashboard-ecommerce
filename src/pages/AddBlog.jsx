@@ -31,6 +31,7 @@ const AddBlog = () => {
     useEffect(() => {
         if (getBlogId !== undefined) {
             dispatch(getBlog(getBlogId))
+            img.push(blogImage)
         } else {
             dispatch(resetState())
         }
@@ -44,8 +45,8 @@ const AddBlog = () => {
     const imgState = useSelector((state) => state.upload.images);
     const blogCatState = useSelector((state) => state.blogCategory.blogCategories)
     const blogState = useSelector((state) => state.blog)
-    const { isSuccess, isError, isLoading, createdBlog,updatedBlog, blogName, blogDesc, blogCategory, blogImage } = blogState;
-    
+    const { isSuccess, isError, isLoading, createdBlog, updatedBlog, blogName, blogDesc, blogCategory, blogImage } = blogState;
+
     useEffect(() => {
         if (isSuccess && createdBlog) {
             toast.success('Blog added successfully!');
@@ -61,20 +62,20 @@ const AddBlog = () => {
     const img = [];
     imgState.forEach((i) => {
         img.push({
-            public_id: i.publi_url,
+            public_id: i.public_url,
             url: i.url
         })
     })
-    // useEffect(() => {
-    //     formik.values.images = img;
-    // }, [img])
+    useEffect(() => {
+        formik.values.images = img;
+    }, [blogImage])
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
             title: blogName || '',
             description: blogDesc || '',
             category: blogCategory || '',
-            images: blogImage || ''
+            images: ''
         },
         validationSchema: userSchema,
         onSubmit: values => {
@@ -155,7 +156,7 @@ const AddBlog = () => {
                         name="description"
                         value={formik.values.description}
                         onChange={formik.handleChange("description")}
-                        // onBlur={formik.handleBlur("description")}
+                    // onBlur={formik.handleBlur("description")}
                     />
 
                     <div className="mt-4 bg-white border-1 p-5 text-center">

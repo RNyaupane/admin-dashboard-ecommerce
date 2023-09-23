@@ -96,7 +96,7 @@ export const getBlogSlice = createSlice({
                 state.isLoading = false;
                 state.isError = false;
                 state.isSuccess = true;
-                state.getBlog = action.payload;
+                state.createdBlog = action.payload;
             })
             .addCase(createBlogs.rejected, (state, action) => {
                 state.isLoading = false;
@@ -115,7 +115,7 @@ export const getBlogSlice = createSlice({
                 state.blogName = action.payload.title;
                 state.blogCategory = action.payload.category;
                 state.blogDesc = action.payload.description;
-                state.blogImage = action.payload.image; 
+                state.blogImage = action.payload.images; 
             })
             .addCase(getBlog.rejected, (state, action) => {
                 state.isLoading = false;

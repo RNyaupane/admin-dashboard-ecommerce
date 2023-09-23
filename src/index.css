@@ -55,7 +55,12 @@
   .ant-select-selection-overflow{
     height: 48px;
   }
-  
+  .ant-table{
+    overflow-x: auto;
+  }
+  .ant-table::-webkit-scrollbar {
+    height: 6px;
+  }
  
   #sidebar-wrapper {
     min-height: 100vh;
