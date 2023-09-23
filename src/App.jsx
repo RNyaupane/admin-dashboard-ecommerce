@@ -26,6 +26,7 @@ import ColorList from './pages/ColorList'
 import AddColor from './pages/AddColor'
 import CouponList from './pages/CouponList'
 import AddCoupon from './pages/AddCoupon'
+import ViewOrder from './pages/ViewOrder'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -65,6 +66,7 @@ function App() {
 
             <Route path='enquiries' element={<Enquiries />}></Route>
             <Route path='orders' element={<Orders />}></Route>
+            <Route path='order/:id' element={<ViewOrder />}></Route>
           </Route>
           <Route path='/' element={<Login />}></Route>
           <Route path='/forgot-password' element={<ForgotPassword />}></Route>

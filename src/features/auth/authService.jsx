@@ -18,13 +18,18 @@ const login = async (userData) => {
 
 
 const getOrder = async () => {
-    const response = await axios.get(`${base_url}user/get-all-orders`,config);
+    const response = await axios.get(`${base_url}user/get-all-orders`, config);
+    return response.data;
+}
+
+const getOrderByUser = async (id) => {
+    const response = await axios.post(`${base_url}user/get-order-by-user/${id}`, "", config);
     return response.data;
 }
 
 
 const authService = {
-    login, getOrder
+    login, getOrder, getOrderByUser
 }
 
 export default authService;
