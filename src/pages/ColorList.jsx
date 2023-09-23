@@ -70,7 +70,7 @@ const ColorList = () => {
         setTimeout(()=>{
             dispatch(getColors())
         },100)
-        toast.error('Color deleted successfully!');
+        toast.error('Color deleted!');
     }
 
     return (

@@ -4,10 +4,12 @@ import { Button, Table, Modal } from 'antd'; // Import Modal from antd
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { getEnquiry } from '../features/enquiry/enquirySlice';
-import { BiEdit } from 'react-icons/bi';
-import { AiFillDelete } from 'react-icons/ai';
+import { deleteAEnquiry, getEnquiry, resetState, updateAEnquiry } from '../features/enquiry/enquirySlice';
+import { AiFillDelete, AiOutlineEye } from 'react-icons/ai';
 import { BsEyeFill } from 'react-icons/bs';
+import CustomModel from '../components/CustomModel';
+import { toast } from 'react-toastify';
+
 
 const columns = [
   {
@@ -34,15 +36,26 @@ const columns = [
     title: 'Action',
     dataIndex: 'action',
   },
-  
+
 ];
 
 const Enquiries = () => {
   const dispatch = useDispatch();
   const [isModalVisible, setIsModalVisible] = useState(false); // State for modal visibility
   const [selectedMessage, setSelectedMessage] = useState(''); // State for selected message
+  const [open, setOpen] = useState(false);
+  const [enquiryId, setEnquiryId] = useState('')
+
+  const showModal = (e) => {
+    setOpen(true);
+    setEnquiryId(e)
+  };
+  const hideModal = () => {
+    setOpen(false);
+  };
 
   useEffect(() => {
+    dispatch(resetState())
     dispatch(getEnquiry());
   }, []);
 
@@ -57,8 +70,16 @@ const Enquiries = () => {
       mobile: enquiryDataState[i].mobile,
       status: (
         <>
-          <select name='' className='form-control form-select w-auto'>
-            <option value="">Set Status</option>
+          <select
+            name=''
+            defaultValue={enquiryDataState[i].status ? enquiryDataState[i].status : 'Submitted'}
+            className='form-control form-select w-auto'
+            onChange={(e) => setEnqStatus(e.target.value, enquiryDataState[i]._id)}
+          >
+            <option value="Submitted">Submitted</option>
+            <option value="Contracted">Contracted</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Resolved">Resolved</option>
           </select>
         </>
       ),
@@ -69,8 +90,11 @@ const Enquiries = () => {
             <BsEyeFill className='text-success fs-5' />
           </Link>
           &nbsp;
-          <Link className='ms-2'><AiFillDelete className='text-danger fs-5 mx-0 mx-md-2' /></Link>
-          <Link className='ms-2'><BiEdit className='text-info fs-5' /></Link>
+          <button
+            className='ms-2 bg-transparent border-0'
+            onClick={() => showModal(enquiryDataState[i]._id)}>
+            <AiFillDelete className='text-danger fs-5' />
+          </button>
         </div>
       ),
     });
@@ -87,6 +111,20 @@ const Enquiries = () => {
     setIsModalVisible(false);
   };
 
+  const delEnquiry = (e) => {
+    dispatch(deleteAEnquiry(e))
+    setOpen(false);
+    setTimeout(() => {
+      dispatch(getEnquiry())
+    }, 100)
+    toast.error('Enquiry deleted!');
+  }
+  const setEnqStatus = (e, id) => {
+    const data = { id: id, enqData: e }
+    dispatch(updateAEnquiry(data))
+  }
+
+
   return (
     <div className="container-fluid px-0 md-px-4">
       <div className="row my-5 mx-0 mx-md-3 ">
@@ -94,11 +132,17 @@ const Enquiries = () => {
         <div className="col">
           <Table columns={columns} dataSource={data1} />
         </div>
+        <CustomModel
+          title='Are you sure want to delete this Enquiry?'
+          hideModal={hideModal}
+          open={open}
+          performAction={() => delEnquiry(enquiryId)}
+        />
       </div>
-      
+
       {/* Modal to display the message */}
       <Modal
-        title="Message"
+        title="Enquiry Message"
         open={isModalVisible}
         onCancel={handleCancel}
         footer={[
