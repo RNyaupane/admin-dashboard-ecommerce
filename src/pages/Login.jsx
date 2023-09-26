@@ -20,7 +20,6 @@ const Login = () => {
     validationSchema: userSchema,
     onSubmit: values => {
       dispatch(login(values))
-      console.log(message)
     }
   })
 
